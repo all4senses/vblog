@@ -84,7 +84,7 @@ function vb_misc_import_remote_blogPosts() {
   $query->fields('pl', array('placement_category_id'));
   
   //$query->range(0, 20);
-  $results = $query->execute()->fetchAllAssoc();
+  $results = $query->execute()->fetchAll();
   
   dpm($results);
   
