@@ -7,10 +7,11 @@ body
 	margin: 0 auto;
 	padding: 0;
 	background-color: #C5C9AB;
-	background-image: url('images/Page-BgTexture.jpg');
+/*	background-image: url('images/Page-BgTexture.jpg');
 	background-repeat: repeat-x;
 	background-attachment: fixed;
 	background-position: bottom left;
+*/
 	font: 0.75em/170% Verdana, Arial, Helvetica, sans-serif;
 	color: #454C43;
 }
@@ -1401,9 +1402,9 @@ div.meta div.links ul.links li.comment_forbidden a {
 }
 
 #featured {
-	position: relative;
+/*	position: relative;
 	height: 206px;
-	background: url(images/h_back.jpg) no-repeat center;
+	background: url(images/h_back.jpg) no-repeat center;*/
 }
 
 .terms {
