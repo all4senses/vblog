@@ -1,0 +1,6 @@
+name = VB Misc
+package = VoIP Weblog
+description = "Miscelanious helper functions and hooks implementations"
+core = 7.x
+tags[] = VoIP Weblog
+files[] = vb_misc.module
