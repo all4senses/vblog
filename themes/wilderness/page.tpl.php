@@ -66,7 +66,7 @@
           <div class="cleared"></div>
           <div class="Footer">
             <div class="Footer-inner">
-              <a href="<?php echo $base_path; ?>rss.xml" class="rss-tag-icon" title="RSS"></a>
+              <!-- <a href="<?php //echo $base_path; ?>rss.xml" class="rss-tag-icon" title="RSS"></a> -->
               <div class="Footer-text">
        <?php if (!empty($page['copyright']))print render($page['copyright']); ?>
               </div>
@@ -76,5 +76,5 @@
         </div>
       </div>
       <div class="cleared"></div>
-       <p class="page-footer"><?php print render($page['footer_message']); ?> Theme developed by <a href="http://agileware.net">Agileware Pty Ltd</a></p>
+       <p class="page-footer"><?php print render($page['footer_message']); ?></p>
     </div>
