@@ -14,7 +14,7 @@ function vb_misc_menu() {
   
   $items['test'] = array(
     'title' => 'Test page',
-    'page callback' => 'vn_misc_testPage',
+    'page callback' => 'vb_misc_testPage',
     //'access arguments' => array('administer content'),
     'access arguments' => array('administer taxonomy'), 
     'type' => MENU_CALLBACK,
