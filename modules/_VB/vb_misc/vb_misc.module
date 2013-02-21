@@ -32,29 +32,6 @@ function vb_misc_testPage() {
   
   $out = '<div>Start test...</div>';
 
-  $remote_categories = array(
-    5356 =>	'Best of',
-    343	=> 'Calling plans',
-    345	=> 'Companies',
-    353	=> 'Conferences',
-    728	=> 'Dangers',
-    349	=> 'Development Tools',
-    6136 => 'Did you know',
-    370	=> 'General',
-    1060 => 'Hardware',
-    729	=> 'Industry News',
-    5638 => 'Information About',
-    351	=> 'Interviews',
-    344	=> 'IP Business Phone',
-    1969 => 'Misc',
-    358	=> 'New Application',
-    1058 => 'Podcasts',
-    1771 => 'privacy',
-    6134 => 'Quick introduction',
-    1672 => 'skype',
-    426	=> 'Terminal',
-    807202 => 'Uncategorized',
-  );
   
   vb_misc_import_remote_blogPosts();
   
@@ -78,6 +55,55 @@ function vb_misc_testPage() {
  */
 function vb_misc_import_remote_blogPosts() { 
   
+  
+  $remote_category = array(
+    5356 =>	'Best of',
+    343	=> 'Calling plans',
+    345	=> 'Companies',
+    353	=> 'Conferences',
+    728	=> 'Dangers',
+    349	=> 'Development Tools',
+    6136 => 'Did you know',
+    370	=> 'General',
+    1060 => 'Hardware',
+    729	=> 'Industry News',
+    5638 => 'Information About',
+    351	=> 'Interviews',
+    344	=> 'IP Business Phone',
+    1969 => 'Misc',
+    358	=> 'New Application',
+    1058 => 'Podcasts',
+    1771 => 'privacy',
+    6134 => 'Quick introduction',
+    1672 => 'skype',
+    426	=> 'Terminal',
+    807202 => 'Uncategorized',
+  );
+
+  $category_map = array(
+    5356 =>	1,
+    343	=> 2,
+    345	=> 3,
+    353	=> 4,
+    728	=> 5,
+    349	=> 6,
+    6136 => 7,
+    370	=> 8,
+    1060 => 9,
+    729	=> 10,
+    5638 => 11,
+    351	=> 12,
+    344	=> 13,
+    1969 => 14,
+    358	=> 15,
+    1058 => 16,
+    1771 => 17,
+    1672 => 18,
+    426	=> 19,
+    6134 => 20,
+  );
+  
+  
   $query = db_select('mt_entry_EXPORT', 'vp')
         ->fields('vp');
   $query->leftJoin('mt_placement_EXPORT', 'pl', 'pl.placement_entry_id = vp.entry_id AND pl.placement_is_primary = 1');
@@ -88,19 +114,19 @@ function vb_misc_import_remote_blogPosts() {
   
   dpm($results);
   
- return;
+ //return;
  
  
   foreach ($results as $result) {
     
     $form_state['values'] = array(
-      'title' => $result->post_title,
-      'post_date' => $result->post_date,
-      'created' => strtotime($result->post_date),
-      'changed' => strtotime($result->post_modified),
-      'category' => $category_map[$result->term_taxonomy_id],
-      'url_alias' => date('Y\/m', strtotime($result->post_date)) . '/' . $result->post_name,
-      'ID' => $result->ID,
+      'title' => $result->entry_title,
+      'post_date' => $result->entry_created_on,
+      'created' => strtotime($result->entry_created_on),
+      'changed' => strtotime($result->entry_created_on),
+      'category' => $category_map[$result->placement_category_id],
+      'url_alias' => str_replace( '.php',  '', str_replace('http://www.voip-weblog.com/', '', $result->url)),
+      'ID' => $result->entry_id,
     );
     
     $form_state['values']['body']['und'][0]['value'] = str_replace('--', '-', $result->post_content);
