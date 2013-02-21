@@ -129,7 +129,7 @@ function vb_misc_import_remote_blogPosts() {
       'ID' => $result->entry_id,
     );
     
-    $form_state['values']['body']['und'][0]['value'] = str_replace('--', '-', $result->post_content);
+    $form_state['values']['body']['und'][0]['value'] = str_replace('--', '-', $result->entry_text);
     
     if (preg_match('/(.*)<!--more-->(.*)/s', $form_state['values']['body']['und'][0]['value'], $matches)) {
       //dpm($matches);
