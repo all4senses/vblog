@@ -198,7 +198,9 @@ function vb_misc_createNode_BlogPost($form_state) {
   
   $node->field_old_id[$node->language][0]['value'] = $form_state['values']['ID'];
   
-  $node->field_categories[$node->language][0]['tid'] = $form_state['values']['category'];
+  if ($form_state['values']['category']) {
+    $node->field_categories[$node->language][0]['tid'] = $form_state['values']['category'];
+  }
   
   
   $node->path = array(
