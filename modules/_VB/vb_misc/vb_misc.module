@@ -80,7 +80,7 @@ function vb_misc_testPage() {
     $comment->created = strtotime($wp_comment->comment_created_on); // OPTIONAL. You can set any time you want here. Useful for backdated comments creation.
     $comment->changed = $comment->created;
 
-    dpm($comment);
+    //dpm($comment);
     
     vb_misc_comment_save($comment);
     
@@ -97,7 +97,7 @@ function vb_misc_testPage() {
       ->condition('nid', $node_nid)
       ->execute();
     
-    break;
+    //break;
     
   }
   
