@@ -162,7 +162,7 @@ function vb_misc_import_remote_blogPosts() {
     
     $form_states[] = $form_state['values'];
     // Add only one node.
-    //vb_misc_createNode_BlogPost($form_state);
+    vb_misc_createNode_BlogPost($form_state);
     //break;
   }
   
