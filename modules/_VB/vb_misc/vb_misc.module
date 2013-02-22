@@ -106,7 +106,7 @@ function vb_misc_import_remote_blogPosts() {
   
   $query = db_select('mt_entry_EXPORT', 'vp')
         ->fields('vp');
-  $query->leftJoin('mt_placement_EXPORT', 'pl', 'pl.placement_entry_id = vp.entry_id AND pl.placement_is_primary = 1');
+  $query->leftJoin('mt_placement_EXPORT', 'pl', 'pl.placement_entry_id = vp.entry_id AND pl.placement_is_primary = 0');
   $query->fields('pl', array('placement_category_id'));
   
   //$query->range(0, 20);
@@ -114,7 +114,7 @@ function vb_misc_import_remote_blogPosts() {
   
   dpm($results);
   
- //return;
+ return;
  
  
   foreach ($results as $result) {
@@ -124,7 +124,7 @@ function vb_misc_import_remote_blogPosts() {
       'post_date' => $result->entry_created_on,
       'created' => strtotime($result->entry_created_on),
       'changed' => strtotime($result->entry_created_on),
-      'category' => $category_map[$result->placement_category_id],
+      'category' => isset($category_map[$result->placement_category_id]) ? $result->placement_category_id : NULL,
       'url_alias' => str_replace('http://www.voip-weblog.com/', '', $result->url),
       'ID' => $result->entry_id,
     );
