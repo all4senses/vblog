@@ -131,6 +131,16 @@ function vb_misc_import_remote_blogPosts() {
       'url_alias' => str_replace('http://www.voip-weblog.com/', '', $result->url),
       'ID' => $result->entry_id,
     );
+  
+    
+    $query = db_select('mt_entry_EXPORT', 'vp');
+    $query->leftJoin('mt_placement_EXPORT', 'pl', 'pl.placement_entry_id = vp.entry_id AND pl.placement_is_primary = 1');
+    $query->condition('pl.placement_is_primary', 1);
+    $query->fields('pl', array('placement_category_id'));
+
+    //$query->range(0, 20);
+    $other_term = $query->execute()->fetchField();
+    $form_state['values']['category_term_other'] = $category_map[$other_term->placement_category_id];
     
     $form_state['values']['body']['und'][0]['value'] = str_replace('--', '-', $result->entry_text);
     
