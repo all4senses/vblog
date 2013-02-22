@@ -108,7 +108,7 @@ function vb_misc_import_remote_blogPosts() {
         ->fields('vp');
   $query->leftJoin('mt_placement_EXPORT', 'pl', 'pl.placement_entry_id = vp.entry_id AND pl.placement_is_primary = 0');
   $query->condition('pl.placement_is_primary', 0);
-  $query->fields('pl', array('placement_category_id'));
+  $query->fields('pl', array('placement_category_id', 'placement_is_primary'));
   
   //$query->range(0, 20);
   $results = $query->execute()->fetchAll();
