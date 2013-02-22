@@ -106,8 +106,7 @@ function vb_misc_import_remote_blogPosts() {
   
   $query = db_select('mt_entry_EXPORT', 'vp')
         ->fields('vp');
-  $query->leftJoin('mt_placement_EXPORT', 'pl', 'pl.placement_entry_id = vp.entry_id AND pl.placement_is_primary = 0');
-  $query->condition('pl.placement_is_primary', 0);
+  $query->leftJoin('mt_placement_EXPORT', 'pl', 'pl.placement_entry_id = vp.entry_id AND pl.placement_is_primary = 1');
   $query->fields('pl', array('placement_category_id', 'placement_is_primary'));
   
   //$query->range(0, 20);
@@ -134,15 +133,18 @@ function vb_misc_import_remote_blogPosts() {
   
     
     $query = db_select('mt_entry_EXPORT', 'vp');
-    $query->leftJoin('mt_placement_EXPORT', 'pl', 'pl.placement_entry_id = vp.entry_id AND pl.placement_is_primary = 1');
-    $query->condition('pl.placement_is_primary', 1);
+    $query->leftJoin('mt_placement_EXPORT', 'pl', 'pl.placement_entry_id = vp.entry_id AND pl.placement_is_primary = 0');
+    $query->condition('pl.placement_is_primary', 0);
     $query->condition('vp.entry_id', $result->entry_id);
     $query->fields('pl', array('placement_category_id'));
 
     //$query->range(0, 20);
     $other_term = $query->execute()->fetchField();
-    $form_state['values']['category_other'] = $category_map[$other_term];
-    $form_state['values']['category_term_other'] = $remote_category[$other_term];
+    if ($other_term) {
+      $form_state['values']['category_other'] = $category_map[$other_term];
+      $form_state['values']['category_term_other'] = $remote_category[$other_term];
+    }
+    
     
     
     $form_state['values']['body']['und'][0]['value'] = str_replace('--', '-', $result->entry_text);
@@ -158,12 +160,14 @@ function vb_misc_import_remote_blogPosts() {
       $form_state['values']['body']['und'][0]['summary'] = '';
     }
     
-    dpm($form_state['values']);
-    
+    $form_states[] = $form_state['values'];
     // Add only one node.
     //vb_misc_createNode_BlogPost($form_state);
     //break;
   }
+  
+  dpm($form_states);
+  
 }
 
 
@@ -217,6 +221,9 @@ function vb_misc_createNode_BlogPost($form_state) {
   
   if ($form_state['values']['category']) {
     $node->field_categories[$node->language][0]['tid'] = $form_state['values']['category'];
+  }
+  if (!empty($form_state['values']['category_other'])) {
+    $node->field_categories[$node->language][1]['tid'] = $form_state['values']['category_other'];
   }
   
   
