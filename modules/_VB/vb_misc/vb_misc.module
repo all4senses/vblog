@@ -125,7 +125,7 @@ function vb_misc_import_remote_blogPosts() {
       'created' => strtotime($result->entry_created_on),
       'changed' => strtotime($result->entry_created_on),
       'category' => $category_map[$result->placement_category_id],
-      'url_alias' => str_replace( '.php',  '', str_replace('http://www.voip-weblog.com/', '', $result->url)),
+      'url_alias' => str_replace('http://www.voip-weblog.com/', '', $result->url),
       'ID' => $result->entry_id,
     );
     
@@ -145,7 +145,7 @@ function vb_misc_import_remote_blogPosts() {
     
     // Add only one node.
     vb_misc_createNode_BlogPost($form_state);
-    break;
+    //break;
   }
 }
 
