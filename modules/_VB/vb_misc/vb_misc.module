@@ -113,9 +113,9 @@ function vb_misc_import_remote_blogPosts() {
   //$query->range(0, 20);
   $results = $query->execute()->fetchAll();
   
-  dpm($results);
+  //dpm($results);
   
- return;
+ //return;
  
  
   foreach ($results as $result) {
@@ -143,9 +143,10 @@ function vb_misc_import_remote_blogPosts() {
       $form_state['values']['body']['und'][0]['summary'] = '';
     }
     
+    dpm($form_state['values']);
     
     // Add only one node.
-    vb_misc_createNode_BlogPost($form_state);
+    //vb_misc_createNode_BlogPost($form_state);
     //break;
   }
 }
