@@ -33,15 +33,73 @@ function vb_misc_testPage() {
   $out = '<div>Start test...</div>';
 
   
-  vb_misc_import_remote_blogPosts();
+  //vb_misc_import_remote_blogPosts();
   
-  /*
-  $query = db_select('voip_comments', 'c')
-    ->fields('c')
-    ->condition('c.comment_approved', 1)
-    ->condition('c.comment_approved', 'spam', '!=');
+  
+  
+  
+  
+  
+  
+  $query = db_select('mt_comment_EXPORT', 'c')
+    ->fields('c');
   $wp_comments = $query->execute();
-  */
+  
+  
+  foreach ($wp_comments as $wp_comment) {
+    
+    //dpm($wp_comment);
+   
+    $query = db_select('field_data_field_old_id', 'oi');
+    $query->leftJoin('node', 'n', 'n.nid = oi.entity_id');
+    $query->condition('oi.field_old_id_value', $wp_comment->comment_entry_id);
+    $query->fields('n', array('nid'));
+    $node_nid = $query->execute()->fetchField();
+    
+    
+    $comment = new stdClass();
+    
+    $comment->nid = $node_nid; // nid of a node you want to attach a comment to
+    $comment->cid = 0; // leave it as is
+    $comment->pid = 0; // parent comment id, 0 if none 
+    $comment->uid = 0; // user's id, who left the comment
+    $comment->mail = $wp_comment->comment_email; // user's email
+    $comment->name = $wp_comment->comment_author; // If user is authenticated you can omit this field, it will be auto-populated, if the user is anonymous and you want to name him somehow, input his name here
+    $comment->thread = '01/'; // OPTIONAL. If you need comments to be threaded you can fill this value. Otherwise omit it.
+    $comment->hostname = $wp_comment->comment_ip; // OPTIONAL. You can log poster's ip here
+    $comment->is_anonymous = 1; // leave it as is
+    $comment->homepage = $wp_comment->comment_url; // you can add homepage URL here
+    $comment->status = COMMENT_PUBLISHED; // We auto-publish this comment
+    $comment->language = LANGUAGE_NONE; // The same as for a node
+    $comment->subject = ''; 
+    $comment->comment_body[$comment->language][0]['value'] = $wp_comment->comment_text; // Everything here is pretty much like with a node
+    $comment->comment_body[$comment->language][0]['format'] = 'filtered_html'; 
+
+    comment_submit($comment); // saving a comment
+  
+    $comment->created = strtotime($wp_comment->comment_created_on); // OPTIONAL. You can set any time you want here. Useful for backdated comments creation.
+    $comment->changed = $comment->created;
+
+    dpm($comment);
+    
+    vb_misc_comment_save($comment);
+    
+    $result = db_update('node')
+      ->fields(array(
+        'comment' => 1,
+      ))
+      ->condition('nid', $node_nid)
+      ->execute();
+    $result = db_update('node_revision')
+      ->fields(array(
+        'comment' => 1,
+      ))
+      ->condition('nid', $node_nid)
+      ->execute();
+    
+    break;
+    
+  }
   
 
   
@@ -150,11 +208,7 @@ function vb_misc_import_remote_blogPosts() {
     $form_state['values']['body']['und'][0]['value'] = str_replace('--', '-', $result->entry_text);
     
     if (preg_match('/(.*)<!--more-->(.*)/s', $form_state['values']['body']['und'][0]['value'], $matches)) {
-      //dpm($matches);
-      ////$form_state['values']['body']['und'][0]['value'] = $matches[1] . /*'<span id="more"></span>' .*/ $matches[2];
-      ////////$form_state['values']['body']['und'][0]['summary'] = $matches[1] . '<p><a href="/' . $form_state['values']['url_alias'] . '#more" class="more-link">Read the rest of this entry »</a></p>';
       $form_state['values']['body']['und'][0]['summary'] = $matches[1];
-      //$body_full_markup = preg_replace('|\[video:.*(http.*)\]|', '<a href="$1"> [Watch a video] </a>', $body_full_markup);
     }
     else {
       $form_state['values']['body']['und'][0]['summary'] = '';
@@ -168,6 +222,174 @@ function vb_misc_import_remote_blogPosts() {
   
   dpm($form_states);
   
+
+
+  
+}
+
+
+/**
+ * Accepts a submission of new or changed comment content.
+ *
+ * @param $comment
+ *   A comment object.
+ */
+function vb_misc_comment_save($comment) {
+  global $user;
+
+  $transaction = db_transaction();
+  try {
+    $defaults = array(
+      'mail' => '',
+      'homepage' => '',
+      'name' => '',
+      'status' => user_access('skip comment approval') ? COMMENT_PUBLISHED : COMMENT_NOT_PUBLISHED,
+    );
+    foreach ($defaults as $key => $default) {
+      if (!isset($comment->$key)) {
+        $comment->$key = $default;
+      }
+    }
+    // Make sure we have a bundle name.
+    if (!isset($comment->node_type)) {
+      
+      
+      // a4s fix. Make it a bit faster...
+      //$node = node_load($comment->nid);
+      
+      $query = db_select('node', 'n')
+        ->fields('n', array('type'))
+        ->condition('nid', $comment->nid);
+      $node = $query->execute()->fetchObject();
+              
+      $comment->node_type = 'comment_node_' . $node->type;
+    }
+
+    // Load the stored entity, if any.
+    if (!empty($comment->cid) && !isset($comment->original)) {
+      $comment->original = entity_load_unchanged('comment', $comment->cid);
+    }
+
+    field_attach_presave('comment', $comment);
+
+    // Allow modules to alter the comment before saving.
+    module_invoke_all('comment_presave', $comment);
+    module_invoke_all('entity_presave', $comment, 'comment');
+
+    if ($comment->cid) {
+
+      drupal_write_record('comment', $comment, 'cid');
+
+      // Ignore slave server temporarily to give time for the
+      // saved comment to be propagated to the slave.
+      db_ignore_slave();
+
+      // Update the {node_comment_statistics} table prior to executing hooks.
+      _comment_update_node_statistics($comment->nid);
+
+      field_attach_update('comment', $comment);
+      // Allow modules to respond to the updating of a comment.
+      module_invoke_all('comment_update', $comment);
+      module_invoke_all('entity_update', $comment, 'comment');
+    }
+    else {
+      // Add the comment to database. This next section builds the thread field.
+      // Also see the documentation for comment_view().
+      if (!empty($comment->thread)) {
+        // Allow calling code to set thread itself.
+        $thread = $comment->thread;
+      }
+      elseif ($comment->pid == 0) {
+        // This is a comment with no parent comment (depth 0): we start
+        // by retrieving the maximum thread level.
+        $max = db_query('SELECT MAX(thread) FROM {comment} WHERE nid = :nid', array(':nid' => $comment->nid))->fetchField();
+        // Strip the "/" from the end of the thread.
+        $max = rtrim($max, '/');
+        // We need to get the value at the correct depth.
+        $parts = explode('.', $max);
+        $firstsegment = $parts[0];
+        // Finally, build the thread field for this new comment.
+        $thread = int2vancode(vancode2int($firstsegment) + 1) . '/';
+      }
+      else {
+        // This is a comment with a parent comment, so increase the part of the
+        // thread value at the proper depth.
+
+        // Get the parent comment:
+        $parent = comment_load($comment->pid);
+        // Strip the "/" from the end of the parent thread.
+        $parent->thread = (string) rtrim((string) $parent->thread, '/');
+        // Get the max value in *this* thread.
+        $max = db_query("SELECT MAX(thread) FROM {comment} WHERE thread LIKE :thread AND nid = :nid", array(
+          ':thread' => $parent->thread . '.%',
+          ':nid' => $comment->nid,
+        ))->fetchField();
+
+        if ($max == '') {
+          // First child of this parent.
+          $thread = $parent->thread . '.' . int2vancode(0) . '/';
+        }
+        else {
+          // Strip the "/" at the end of the thread.
+          $max = rtrim($max, '/');
+          // Get the value at the correct depth.
+          $parts = explode('.', $max);
+          $parent_depth = count(explode('.', $parent->thread));
+          $last = $parts[$parent_depth];
+          // Finally, build the thread field for this new comment.
+          $thread = $parent->thread . '.' . int2vancode(vancode2int($last) + 1) . '/';
+        }
+      }
+
+      if (empty($comment->created)) {
+        $comment->created = REQUEST_TIME;
+      }
+
+      if (empty($comment->changed)) {
+        $comment->changed = $comment->created;
+      }
+
+      if ($comment->uid === $user->uid && isset($user->name)) { // '===' Need to modify anonymous users as well.
+        $comment->name = $user->name;
+      }
+
+      // Ensure the parent id (pid) has a value set.
+      if (empty($comment->pid)) {
+        $comment->pid = 0;
+      }
+
+      // Add the values which aren't passed into the function.
+      $comment->thread = $thread;
+      
+      // a4s fix
+      ///////////////////////////////////////$comment->hostname = ip_address();
+
+      drupal_write_record('comment', $comment);
+
+      // Ignore slave server temporarily to give time for the
+      // created comment to be propagated to the slave.
+      db_ignore_slave();
+
+      // Update the {node_comment_statistics} table prior to executing hooks.
+      _comment_update_node_statistics($comment->nid);
+
+      field_attach_insert('comment', $comment);
+
+      // Tell the other modules a new comment has been submitted.
+      module_invoke_all('comment_insert', $comment);
+      module_invoke_all('entity_insert', $comment, 'comment');
+    }
+    if ($comment->status == COMMENT_PUBLISHED) {
+      module_invoke_all('comment_publish', $comment);
+    }
+    unset($comment->original);
+  }
+  catch (Exception $e) {
+    $transaction->rollback('comment');
+    watchdog_exception('comment', $e);
+    throw $e;
+  }
+
 }
 
 
