@@ -140,7 +140,9 @@ function vb_misc_import_remote_blogPosts() {
 
     //$query->range(0, 20);
     $other_term = $query->execute()->fetchField();
-    $form_state['values']['category_term_other'] = $category_map[$other_term];
+    $form_state['values']['category_other'] = $category_map[$other_term];
+    $form_state['values']['category_term_other'] = $remote_category[$other_term];
+    
     
     $form_state['values']['body']['und'][0]['value'] = str_replace('--', '-', $result->entry_text);
     
