@@ -74,6 +74,6 @@ function vb_pages_buildHome($name = NULL, $data  = NULL) {
 //      
 //  $out .='<div class="bottom-clear"></div></div>';
   
-  return $out;
+  return 'test'; //$out;
 }
 
