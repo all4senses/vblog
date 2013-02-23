@@ -47,7 +47,6 @@ function vb_pages_buildHome($name = NULL, $data  = NULL) {
      $block_data = array('module' => 'views', 'delta' => 'blog-block_home_blog_teasers');
      $out .= vb_blocks_getBlockThemed($block_data);
   
-    dpm('xxx = ' . vb_blocks_getBlockThemed($block_data));
   
   // Content of a home page saved in db as a var.
   // $out .= theme($name, array('data' => $data));
@@ -74,6 +73,6 @@ function vb_pages_buildHome($name = NULL, $data  = NULL) {
 //      
 //  $out .='<div class="bottom-clear"></div></div>';
   
-  return 'test'; //$out;
+  return $out;
 }
 
