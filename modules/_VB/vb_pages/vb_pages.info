@@ -1,0 +1,6 @@
+name = VB Pages
+package = VoIP Weblog
+description = "Various functions and forms for pages"
+core = 7.x
+tags[] = VoIP Weblog
+files[] = vb_pages.module

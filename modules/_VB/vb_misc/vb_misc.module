@@ -466,3 +466,27 @@ function vb_misc_createNode_BlogPost($form_state) {
 }
 
 
+
+
+
+/**
+ * Returns preface node by key.
+ */
+function vb_misc_getPrefaceByKey($key) {
+    
+    $preface_node = NULL;
+    
+    $query = db_select('node', 'n');
+    $query->join('field_data_field_preface_key', 'pk', "pk.entity_id = n.nid"); 
+    $query->fields('n', array('nid'))  
+          //->fields('pn', array('field_preface_key_value')) 
+          ->condition('n.type', 'preface')
+          ->condition('pk.field_preface_key_value', $key); 
+    $preface_nid = $query->execute()->fetchField(); 
+    if ($preface_nid) {
+      $preface_node = node_load($preface_nid);
+    }
+    return $preface_node;
+  }
+  
+

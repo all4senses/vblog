@@ -1,0 +1,6 @@
+name = VB Blocks
+package = VoIP Weblog
+description = "Defines different blocks for the site including ones for side bars and MegaMenu"
+core = 7.x
+tags[] = VoIP Weblog
+files[] = vb_blocks.module

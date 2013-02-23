@@ -1,0 +1,147 @@
+<?php
+
+/**
+ * @file
+ * Module for building and managing site's blocks.
+ */
+
+
+module_load_include('inc', 'vb_blocks', 'inc/constants');
+
+
+/**
+ * Implements hook_block_info().
+ */
+function vb_blocks_block_info() {
+      
+  //return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function vb_blocks_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {  
+    
+    
+  }
+
+  return $block;
+}
+
+
+/**
+ * Wrap a block content in proper block's divs.
+ */
+function vb_blocks_wrapInBlockThemed($block_data, $block)
+{
+  if(!isset($block['content']) || !$block['content']) {
+      return null;
+  }
+  if (is_array($block['content'])) {
+    $block['content'] = render($block);
+  }
+  if(isset($block_data['subjectTag']) && $block_data['subjectTag']) {
+    $subjectTag = $block_data['subjectTag'];
+  }
+  else {
+    $subjectTag = 'h2';
+  }
+  if(isset($block_data['replaceUnderlinesWithDashesInID']) && $block_data['replaceUnderlinesWithDashesInID']) {
+    $block_data['module'] = str_replace('_', '-', $block_data['module']);
+    $block_data['delta'] = str_replace('_', '-', $block_data['delta']);
+  }
+  if (isset($block_data['shadow']) && $block_data['shadow']) {
+    return 
+      '<section id="block-' . $block_data['module'] . '-' . $block_data['delta'] . '" class="block vn block-' . $block_data['module'] . (isset($block_data['class']) ? ' ' . $block_data['class'] : '') . '">' 
+        . '<div class="inside">'
+            . ( ($block['subject'] && (!isset($block_data['subject_visible']) || $block_data['subject_visible']) )
+                ? 
+                '<div class="block-icon pngfix"></div><' . $subjectTag . ' class="block-title">' . $block['subject'] . '</' . $subjectTag . '>'
+                :
+                '') 
+            . '<div class="content">' . $block['content'] . '</div>
+          </div> <!-- /.inside -->
+          <div class="shadow"></div>
+      </section>';
+  }
+  else {
+    return 
+      '<section id="block-' . $block_data['module'] . '-' . $block_data['delta'] . '" class="block vn block-' . $block_data['module'] . (isset($block_data['class']) ? ' ' . $block_data['class'] : '') . '">' 
+         . ( ($block['subject'] && (!isset($block_data['subject_visible']) || $block_data['subject_visible']) )
+            ? 
+            '<div class="block-icon pngfix"></div><' . $subjectTag . ' class="block-title">' . $block['subject'] . '</' . $subjectTag . '>'
+            :
+            '') 
+         . '<div class="content">' . $block['content'] . '</div>
+      </section>';
+  }
+}
+
+
+/**
+ * Returns a content of a block wrapped in proper divs.
+ */
+function vb_blocks_getBlockThemed_noCache($block_data){
+  
+  // No caching version.
+  
+  $block = module_invoke($block_data['module'], 'block_view', $block_data['delta']);
+
+  if ($block) {
+    if (isset($block_data['subject'])) {
+      $block['subject'] = $block_data['subject'];
+    }
+    elseif (@$block_data['no_subject']) {
+      $block['subject'] = '';
+    }
+    return vb_blocks_wrapInBlockThemed($block_data, $block);
+  }
+  return NULL;
+  
+}
+
+
+/**
+ * Returns a content of a block wrapped in proper divs.
+ */
+function vb_blocks_getBlockThemed($block_data, $cache_on = FALSE, $cache_expire_str = FALSE, $suffix = NULL)
+{
+
+  
+  
+  // No caching version.
+  
+  if (!$cache_on) {
+    return vb_blocks_getBlockThemed_noCache($block_data);
+  }
+
+  
+  
+  // Caching system version.
+  
+  $cid = 'vn-block-cache---' . $block_data['module'] . '-' . $block_data['delta'] . $suffix;
+  $cache = cache_get($cid, 'cache');
+
+  if ($cache && !empty($cache->data) && $cache->expire > time()) {
+    $out = $cache->data;
+  }
+  else {
+
+    if ($out = vb_blocks_getBlockThemed_noCache($block_data)) {
+      if ($cache_expire_str) {
+        cache_set($cid, $out, 'cache', strtotime($cache_expire_str));
+      }
+      else {
+        cache_set($cid, $out, 'cache');
+      }
+      
+    }
+
+  } // End of else of if ($cache && !empty($cache->data) && $cache->expire > time()) {
+
+  return $out;
+}
+
