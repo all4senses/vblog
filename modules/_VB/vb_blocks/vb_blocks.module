@@ -12,7 +12,7 @@
  */
 function vb_blocks_block_info() {
    
-  $block = array();
+  $blocks = array();
   return $blocks;
 }
 
