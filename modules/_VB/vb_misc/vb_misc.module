@@ -253,7 +253,7 @@ Granted the phones I have are probably a couple of years old by now. Maybe there
 //    dpm($matches);
 //  }
   
-  if(preg_match('/(.*)(?‚?)(.*)/i', $str, $matches)) {
+  if(preg_match('/(.*)(\?\‚\?)(.*)/i', $str, $matches)) {
     dpm($matches);
   }
   
