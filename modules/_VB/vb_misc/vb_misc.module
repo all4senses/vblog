@@ -142,6 +142,10 @@ function vb_misc_testPage() {
       if(preg_match('/(.*)\?\‚\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $new_body, $matches)) {
         dpm($matches);
         $result->matches = $matches;
+        
+        
+        $result->new_body = str_replace('Photo ?‚?©', 'Photo ©', $result->new_body);
+        $result->new_body = str_replace('?‚?©', 'Photo ©', $result->new_body);
         $bodies[] = $result;
         
         $guest_author = $matches[3] . '; ' . $matches[2];
@@ -158,6 +162,8 @@ function vb_misc_testPage() {
          $extra_data['guest_author'] = $guest_author;
          
         $extra_data = serialize($extra_data);
+        
+        $extra_data = '';
         
         db_update('field_data_field_extra_data')
           ->fields(array(
