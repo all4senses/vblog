@@ -1282,7 +1282,7 @@ font-size: 15px;
     
 .node-type-quote .content .author{float: right; font-size: 13px; font-style: italic; font-weight: bold; margin-top: 10px; color: gray;}
 
-.guest-author{margin-left: 7px; color: #478AFD;}
+.guest-author{margin-left: 0; color: #478AFD;}
 
 .node-type-quote .content .right{float: right; width: 230px; height: 329px; position: relative;}
 
