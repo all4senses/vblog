@@ -111,7 +111,7 @@ function vb_misc_testPage() {
       ->fields(array(
         'entity_id' => $result->entity_id,
         'revision_id'=> $result->entity_id,
-        'body_value' => $new_body,
+        'body_value' => $result->new_body,
       ))
       ->condition('entity_id', $result->entity_id)
       ->condition('entity_type', $result->entity_type)
@@ -121,7 +121,7 @@ function vb_misc_testPage() {
       ->fields(array(
         'entity_id' => $result->entity_id,
         'revision_id'=> $result->entity_id,
-        'body_value' => $new_body,
+        'body_value' => $result->new_body,
       ))
       ->condition('entity_id', $result->entity_id)
       ->condition('entity_type', $result->entity_type)
