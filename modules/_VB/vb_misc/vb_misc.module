@@ -97,19 +97,11 @@ function vb_misc_testPage() {
     
     $new_body = $result->body_value;
     
-    
     //$result->new_body = str_replace('24768940/images', 'f/24768940/images', $result->body_value);
-    
     //$result->new_body = str_replace('50226711/images', 'f/50226711/images', $result->new_body);
     
-
     
-    //$new_body = str_replace('f/f/f/', 'f/', $new_body);
-    //$new_body = str_replace('f/f/', 'f/', $new_body);
-    
-    
-    
-    
+  /*  
   if(preg_match_all('/<div class="pic">
 	.*<img.*\/><br \/>
 	(.*)<a.*href="(.*)".*rel=.*>(.*)<\/a><\/div>/i', $new_body, $matches)) {
@@ -143,7 +135,7 @@ function vb_misc_testPage() {
 //    //$result->new_body = $new_body;
 //  }
   
-  
+  */
     
     
     if (strpos($new_body, '?‚?©')) {
@@ -239,7 +231,7 @@ function vb_misc_testPage() {
   
   
   
-  
+  /*
     $str = '<div class="pic"><img alt="flickr_465504923.jpg" border="0" src="http://www.voip-weblog.com/f/50226711/images/flickr_465504923.jpg" /></div>For the first time in a while, I cracked open my box of VoIP gear and broke out a couple of my IP phones. Why? Because I recently received an IP PBX from the folks at <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.talkswitch.com/">Talkswitch</a> and I want to give it a try. While Talkswitch sent me both an analog and a voip phone of their own, I also wanted to see what of my gear was compatible.
 
 I have phones from Linksys (SPA-841 and SPA-941), Grandstream (Budgetone 100, GXP2000), and Polycom (301 and a 501). It looks like the GXP2000 and the Polycoms are compatible, but why not the Linksys gear? I suppose I can configure it manually, but I&#39;d rather not. I&#39;ll do it for the review.
@@ -254,6 +246,8 @@ Granted the phones I have are probably a couple of years old by now. Maybe there
   if(preg_match('/(.*)\?\‚\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
     dpm($matches);
   }
+  */
+  
   
 //  if(preg_match('/(.*)(\?\‚\?\©)(.*)/i', $str, $matches)) {
 //    dpm($matches);
