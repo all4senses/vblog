@@ -1878,6 +1878,8 @@ function vb_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charact
 
     $image_size = getimagesize(ltrim($main_image['src'], '/'));
 
+    dpm($image_size);
+    
     // Scale and cut.
     /*
     if ($image_size[0] / $image_size[1] > 1.5) {
