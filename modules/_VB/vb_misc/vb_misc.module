@@ -128,28 +128,31 @@ function vb_misc_testPage() {
     
     $result->new_body = $new_body;
   }
-  elseif(preg_match_all('/<div class="pic">.*<img.*\/><br \/>(.*)<a.*href="(.*)".*rel=.*>(.*)<\/a><\/div>/i', $new_body, $matches)) {
-  //if(preg_match('/<div class="pic">
-	//(.*)div>/i', $str, $matches)) {
-    dpm($matches);
-  
-    
-  $new_body = preg_replace('/<div class="pic">
-	.*<img(.*)\/><br \/>
-	(.*)<a.*href="(.*)".*rel=.*>(.*)<\/a><\/div>/i', '<div class="pic"><img$1/></div>', $new_body);
-  
-  
-    $result->author = array('name' => $matches[3][0], 'url' => $matches[2][0]);
-    
-    
-    $result->new_body = $new_body;
-  }
+//  elseif(preg_match('/(.*)\?\‚\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
+//    dpm($matches);
+//  
+//    
+////  $new_body = preg_replace('/<div class="pic">
+////	.*<img(.*)\/><br \/>
+////	(.*)<a.*href="(.*)".*rel=.*>(.*)<\/a><\/div>/i', '<div class="pic"><img$1/></div>', $new_body);
+//  
+//  
+//    //$result->author = array('name' => $matches[3][0], 'url' => $matches[2][0]);
+//    
+//    
+//    //$result->new_body = $new_body;
+//  }
   
   
     
     
     if (strpos($new_body, '?‚?©')) {
-      $bodies[] = $result;
+      if(preg_match('/(.*)\?\‚\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
+        dpm($matches);
+        $result->matches = $matches;
+        $bodies[] = $result;
+      }
+      
     }
     
     //if (isset($result->author)) {
@@ -243,10 +246,12 @@ I have phones from Linksys (SPA-841 and SPA-941), Grandstream (Budgetone 100, GX
 
 After looking over all these phones, I realize why I eventually got fed up with every single one of these phones: they&#39;re all too big. Every single one of them takes up too much desk space. If I want to make a call at my desk, I have Skype and a USB headset that works pretty well. If I need to get up, I have my mobile phone, which I can run VoIP on if I really want to. Better yet, I have a dedicated WiFi VoIP handset. 
 
-Granted the phones I have are probably a couple of years old by now. Maybe there&#39;s newer gear out there that&#39;s cooler? What do you think? ?‚?© <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.flickr.com/photos/exalthim/465504923/">Mr.Thomas</a>
+Granted the phones I have are probably a couple of years old by now. Maybe there&#39;s newer gear out there that&#39;s cooler? What do you think? 
+
+?‚?© <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.flickr.com/photos/exalthim/465504923/">Mr.Thomas</a>
 ';
     
-  if(preg_match_all('/(.*)\?\‚\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
+  if(preg_match('/(.*)\?\‚\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
     dpm($matches);
   }
   
