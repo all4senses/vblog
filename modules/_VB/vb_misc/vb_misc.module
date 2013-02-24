@@ -164,7 +164,7 @@ function vb_misc_testPage() {
   
   if(preg_match_all('/<div class="pic">
 	.*<img.*\/><br \/>
-	(.*)<a.*>(.*)<\/a><\/div>/i', $str, $matches)) {
+	(.*)<a.*href="(.*)">(.*)<\/a><\/div>/i', $str, $matches)) {
   //if(preg_match('/<div class="pic">
 	//(.*)div>/i', $str, $matches)) {
     dpm($matches);
