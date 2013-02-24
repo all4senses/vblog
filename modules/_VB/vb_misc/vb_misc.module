@@ -100,7 +100,7 @@ function vb_misc_testPage() {
     
     $result->new_body = str_replace('24768940/images', 'f/24768940/images', $result->body_value);
     
-    $result->new_body = str_replace('50226711/images', 'f/50226711/images', $result->body_value);
+    $result->new_body = str_replace('50226711/images', 'f/50226711/images', $result->new_body);
             
     $bodies[] = $result;
     
