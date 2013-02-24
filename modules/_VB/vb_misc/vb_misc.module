@@ -143,6 +143,9 @@ function vb_misc_testPage() {
         dpm($matches);
         $result->matches = $matches;
         $bodies[] = $result;
+        
+        $guest_author = $matches[3] . '; ' . $matches[2];
+        $out .= '<div><div>' . $guest_author . '<div>' . l($result->entity_id, 'node/' . $result->entity_id) . '</div></div>';
       }
       
     }
