@@ -151,8 +151,8 @@ function vb_misc_testPage() {
 	?‚?© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
   
   
-  $str = '<div class="pic">
-	<img alt="Nokia Launches New Symbian 1Ghz Phone In India" border="0" src="http://www.voip-weblog.com/f/24768940/images/flickr_4806180462.jpg" /><br />?‚?© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
+  //$str = '<div class="pic">
+	//<img alt="Nokia Launches New Symbian 1Ghz Phone In India" border="0" src="http://www.voip-weblog.com/f/24768940/images/flickr_4806180462.jpg" /><br />?‚?© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
   
   
   //$str = '<div class="pic">aaa</div>';
@@ -163,7 +163,8 @@ function vb_misc_testPage() {
   
   
   if(preg_match_all('/<div class="pic">
-	.*<img.*\/><br \/>(.*)<a.*>(.*)<\/a><\/div>/i', $str, $matches)) {
+	.*<img.*\/><br \/>
+	(.*)<a.*>(.*)<\/a><\/div>/i', $str, $matches)) {
   //if(preg_match('/<div class="pic">
 	//(.*)div>/i', $str, $matches)) {
     dpm($matches);
