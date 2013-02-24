@@ -8,6 +8,10 @@ body.two-sidebars #main {float: left; margin: 0 0 0 195px; padding: 0; width: 66
 /* Two columns layout */
 body.one-sidebar.sidebar-second #main {background: white; padding: 5px 10px 10px 10px; width: 825px;}
 
+body.sidebar-first #main {width: 790px;}
+body.sidebar-first #sidebar-first {width: 260px;}
+
+
 a, a:focus{ -webkit-appearance: none; outline: none;}
 
 #c-top{background: url("images/top-back.jpg") repeat-x scroll 0 0 #2581c6; height: 115px;}
@@ -774,18 +778,29 @@ form .counter.exceeded{color: red;}
 
 /*.preface .share{border: none; padding: 3px 0 3px 10px; position: absolute; top: 27px; right: 320px; height: 20px; z-index: 100;}*/
 
+/*
 .float.share{border: none;
 position: absolute;
 top: 0;
-/*height: 120px;*/
 width: 70px;
 z-index: 100;
-/*background: green;*/
 margin-left: -80px;
-/*overflow: hidden;*/
 float: left;
 margin-top: 100px;
 }
+*/
+
+.float.share{border: none;
+position: absolute;
+top: 0;
+width: 70px;
+z-index: 100;
+/*margin-left: -80px;*/
+float: right;
+margin-top: 100px;
+right: 0;
+}
+
 
 .node-type-provider-type .float.share,
 .node-type-preface .float.share,
