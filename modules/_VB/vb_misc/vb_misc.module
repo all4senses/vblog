@@ -248,16 +248,19 @@ Granted the phones I have are probably a couple of years old by now. Maybe there
 ?‚?© <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.flickr.com/photos/exalthim/465504923/">Mr.Thomas</a>
 ';
     
-  if(preg_match('/(.*)
-
-?‚?© <a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
+//  if(preg_match('/(.*)
+//?‚?© <a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
+//    dpm($matches);
+//  }
+  
+  if(preg_match('/(.*)(?‚?©)(.*)/i', $str, $matches)) {
     dpm($matches);
   }
   
   
-  $str = preg_replace('/(.*)?‚?© <a.*href=".*".*>.*<\/a>(.*)/i', '$1$2', $str);
+  //$str = preg_replace('/(.*)?‚?© <a.*href=".*".*>.*<\/a>(.*)/i', '$1$2', $str);
   
-  dpm($str);
+  //dpm($str);
   
     
   /*
