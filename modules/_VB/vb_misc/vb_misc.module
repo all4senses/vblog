@@ -135,9 +135,9 @@ function vb_misc_testPage() {
     
     
     
-    if (isset($result->author)) {
+    //if (isset($result->author)) {
       $bodies[] = $result;
-    }
+    //}
     
     
     /*
