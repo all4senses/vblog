@@ -86,7 +86,7 @@ function vb_misc_testPage() {
   
   //vb_misc_import_remote_blogPosts();
   
-  
+  /*
   $query = db_select('field_data_body', 'b')
     ->fields('b');
   $query->condition('bundle', 'blog_post');
@@ -104,8 +104,10 @@ function vb_misc_testPage() {
     
 
     
-    $new_body = str_replace('f/f/f/', 'f/', $new_body);
-    $new_body = str_replace('f/f/', 'f/', $new_body);
+    //$new_body = str_replace('f/f/f/', 'f/', $new_body);
+    //$new_body = str_replace('f/f/', 'f/', $new_body);
+    
+    
     
     $result->new_body = $new_body;
             
@@ -141,6 +143,21 @@ function vb_misc_testPage() {
   
   dpm($bodies);
   
+  */
+  
+  
+  $str = '<div class="pic">
+	<img alt="Nokia Launches New Symbian 1Ghz Phone In India" border="0" src="http://www.voip-weblog.com/f/24768940/images/flickr_4806180462.jpg" /><br />
+	?‚?© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
+  
+  //$str = preg_replace('|\[video:.*(http.*)\]|', '<a href="$1"> [Watch a video] </a>', $str);
+  
+  //$str = preg_replace('/<div class="pic">.*<img.*\/><br />(.*)<a.*>(.*)</a></div>/i', '<a href="$1"> [Watch a video] </a>', $str);
+  
+  
+  if(preg_match_all('/<div class="pic">.*<img.*\/><br />(.*)<a.*>(.*)</a></div>/i', $str, $matches)) {
+    dpm($matches);
+  }
   
   
   /*
