@@ -128,7 +128,22 @@ function vb_misc_testPage() {
     
     $result->new_body = $new_body;
   }
+  elseif(preg_match_all('/<div class="pic">.*<img.*\/><br \/>(.*)<a.*href="(.*)".*rel=.*>(.*)<\/a><\/div>/i', $new_body, $matches)) {
+  //if(preg_match('/<div class="pic">
+	//(.*)div>/i', $str, $matches)) {
+    dpm($matches);
   
+    
+  $new_body = preg_replace('/<div class="pic">
+	.*<img(.*)\/><br \/>
+	(.*)<a.*href="(.*)".*rel=.*>(.*)<\/a><\/div>/i', '<div class="pic"><img$1/></div>', $new_body);
+  
+  
+    $result->author = array('name' => $matches[3][0], 'url' => $matches[2][0]);
+    
+    
+    $result->new_body = $new_body;
+  }
   
   
     
