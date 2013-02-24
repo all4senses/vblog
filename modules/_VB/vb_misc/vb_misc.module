@@ -190,7 +190,7 @@ function vb_misc_testPage() {
   
   
   
-  /*
+  
   $str = '<div class="pic">
 	<img alt="Nokia Launches New Symbian 1Ghz Phone In India" border="0" src="http://www.voip-weblog.com/f/24768940/images/flickr_4806180462.jpg" /><br />
 	?‚?© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
@@ -232,7 +232,7 @@ function vb_misc_testPage() {
   
   dpm($str);
 
-  */
+  
   
   
   
@@ -248,7 +248,9 @@ Granted the phones I have are probably a couple of years old by now. Maybe there
 ?‚?© <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.flickr.com/photos/exalthim/465504923/">Mr.Thomas</a>
 ';
     
-  if(preg_match_all('/(.*)?‚?© <a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
+  if(preg_match_all('/(.*)
+
+?‚?© <a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
     dpm($matches);
   }
   
