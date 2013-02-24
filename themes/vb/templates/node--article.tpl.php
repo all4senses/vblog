@@ -145,7 +145,8 @@
                   dpm('field_a_teaser is empty');
                   dpm($content);
                   dpm($node);
-                  $teaser_data = vb_misc_getArticleTeaserData('all', $content['body'][0]['#markup'], $node->nid);
+                  //$teaser_data = vb_misc_getArticleTeaserData('all', $content['body'][0]['#markup'], $node->nid);
+                  $teaser_data = vb_misc_getArticleTeaserData('all', $node->body['und'][0]['value'], $node->nid);
                 }
                 echo l('Read more »', 'node/' . $node->nid, array('attributes' => array('class' => array('more')))) . $teaser_data['teaser'];
               }
