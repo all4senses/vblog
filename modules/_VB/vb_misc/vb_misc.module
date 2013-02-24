@@ -127,8 +127,10 @@ function vb_misc_testPage() {
       ->condition('entity_type', $result->entity_type)
       ->execute();
     
-    break;
+    //break;
   }
+  
+  field_cache_clear();
   
   dpm($bodies);
   
