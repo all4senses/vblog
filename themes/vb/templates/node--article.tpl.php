@@ -137,11 +137,13 @@
               }
               else 
                 {
-                //dpm('field_a_teaser IS empty');
+                dpm('field_a_teaser IS empty');
                 if (!empty($node->field_a_teaser['und'][0]['value'])) {
                   $teaser_data['teaser'] = $node->field_a_teaser['und'][0]['value'];
                 }
                 else {
+                  dpm('field_a_teaser is NOT empty');
+                  dpm($content);
                   $teaser_data = vb_misc_getArticleTeaserData('all', $content['body'][0]['#markup'], $node->nid);
                 }
                 echo l('Read more »', 'node/' . $node->nid, array('attributes' => array('class' => array('more')))) . $teaser_data['teaser'];
