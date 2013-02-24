@@ -104,8 +104,8 @@ function vb_misc_testPage() {
             
     $bodies[] = $result;
     
-    dpm($result);
-    /*
+    
+    
     // Need update an existing field.
     db_update('field_data_body')
       ->fields(array(
@@ -119,14 +119,14 @@ function vb_misc_testPage() {
 
     db_update('field_revision_body')
       ->fields(array(
-        'entity_id' => $entity_id,
-        'revision_id'=> $entity_id,    
+        'entity_id' => $result->entity_id,
+        'revision_id'=> $result->entity_id,
         'body_value' => $new_body,
       ))
       ->condition('entity_id', $result->entity_id)
       ->condition('entity_type', $result->entity_type)
       ->execute();
-    */
+    
     break;
   }
   
