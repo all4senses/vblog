@@ -148,10 +148,12 @@ function vb_misc_testPage() {
   
     
     
-    
+    if (strpos($new_body, '?‚?©')) {
+      $bodies[] = $result;
+    }
     
     //if (isset($result->author)) {
-      $bodies[] = $result;
+      //$bodies[] = $result;
     //}
     
     
