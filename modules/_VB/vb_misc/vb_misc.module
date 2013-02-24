@@ -190,11 +190,13 @@ function vb_misc_testPage() {
   
   
   
-  
+  /*
   $str = '<div class="pic">
 	<img alt="Nokia Launches New Symbian 1Ghz Phone In India" border="0" src="http://www.voip-weblog.com/f/24768940/images/flickr_4806180462.jpg" /><br />
 	?‚?© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
   
+  
+
   
   //$str = '<div class="pic">
 	//<img alt="Nokia Launches New Symbian 1Ghz Phone In India" border="0" src="http://www.voip-weblog.com/f/24768940/images/flickr_4806180462.jpg" /><br />?‚?© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
@@ -229,7 +231,33 @@ function vb_misc_testPage() {
 	(.*)<a.*href="(.*)".*rel=.*>(.*)<\/a><\/div>/i', '<div class="pic"><img$1/></div>', $str);
   
   dpm($str);
+
+  */
   
+  
+  
+  
+    $str = '<div class="pic"><img alt="flickr_465504923.jpg" border="0" src="http://www.voip-weblog.com/f/50226711/images/flickr_465504923.jpg" /></div>For the first time in a while, I cracked open my box of VoIP gear and broke out a couple of my IP phones. Why? Because I recently received an IP PBX from the folks at <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.talkswitch.com/">Talkswitch</a> and I want to give it a try. While Talkswitch sent me both an analog and a voip phone of their own, I also wanted to see what of my gear was compatible.
+
+I have phones from Linksys (SPA-841 and SPA-941), Grandstream (Budgetone 100, GXP2000), and Polycom (301 and a 501). It looks like the GXP2000 and the Polycoms are compatible, but why not the Linksys gear? I suppose I can configure it manually, but I&#39;d rather not. I&#39;ll do it for the review.
+
+After looking over all these phones, I realize why I eventually got fed up with every single one of these phones: they&#39;re all too big. Every single one of them takes up too much desk space. If I want to make a call at my desk, I have Skype and a USB headset that works pretty well. If I need to get up, I have my mobile phone, which I can run VoIP on if I really want to. Better yet, I have a dedicated WiFi VoIP handset. 
+
+Granted the phones I have are probably a couple of years old by now. Maybe there&#39;s newer gear out there that&#39;s cooler? What do you think? 
+
+?‚?© <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.flickr.com/photos/exalthim/465504923/">Mr.Thomas</a>
+';
+    
+  if(preg_match_all('/(.*)?‚?© <a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
+    dpm($matches);
+  }
+  
+  
+  $str = preg_replace('/(.*)?‚?© <a.*href=".*".*>.*<\/a>(.*)/i', '$1$2', $str);
+  
+  dpm($str);
+  
+    
   /*
   $query = db_select('mt_comment_EXPORT', 'c')
     ->fields('c');
