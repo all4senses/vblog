@@ -246,7 +246,7 @@ After looking over all these phones, I realize why I eventually got fed up with 
 Granted the phones I have are probably a couple of years old by now. Maybe there&#39;s newer gear out there that&#39;s cooler? What do you think? ?‚?© <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.flickr.com/photos/exalthim/465504923/">Mr.Thomas</a>
 ';
     
-  if(preg_match('/(.*)\?\‚\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
+  if(preg_match_all('/(.*)\?\‚\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
     dpm($matches);
   }
   
