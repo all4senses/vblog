@@ -179,6 +179,12 @@ function vb_misc_testPage() {
   }
   
   
+  $str = preg_replace('/<div class="pic">
+	.*<img(.*)\/><br \/>
+	(.*)<a.*href="(.*)".*rel=.*>(.*)<\/a><\/div>/i', '<div class="pic"><img$1/></div>', $str);
+  
+  dpm($str);
+  
   /*
   $query = db_select('mt_comment_EXPORT', 'c')
     ->fields('c');
