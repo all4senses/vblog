@@ -107,6 +107,8 @@ function vb_misc_testPage() {
     $new_body = str_replace('f/f/f/', 'f/', $new_body);
     $new_body = str_replace('f/f/', 'f/', $new_body);
     
+    $result->new_body = $new_body;
+            
     $bodies[] = $result;
     
     
