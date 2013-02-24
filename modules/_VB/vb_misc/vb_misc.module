@@ -1874,7 +1874,7 @@ function vb_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charact
       $main_image['uri'] = $stream_path;
     }
     
-    dpm($main_image);
+    
 
     $image_size = getimagesize(ltrim($main_image['src'], '/'));
 
@@ -1922,6 +1922,8 @@ function vb_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charact
       //$main_image['src_themed'] = image_style_url('share', $stream_path);
     }
     $main_image['src_themed'] = image_style_url($style_name_share, $stream_path);
+    
+    dpm($main_image);
     
     $main_image_html = '<div class="thumb' . ($thumbnail_fid ? ' field' : '') . '">' . $main_image_html . '</div>';
     
