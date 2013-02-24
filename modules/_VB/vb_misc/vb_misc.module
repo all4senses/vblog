@@ -86,7 +86,7 @@ function vb_misc_testPage() {
   
   //vb_misc_import_remote_blogPosts();
   
-  
+  /*
   $query = db_select('field_data_body', 'b')
     ->fields('b');
   $query->condition('bundle', 'blog_post');
@@ -100,42 +100,6 @@ function vb_misc_testPage() {
     //$result->new_body = str_replace('24768940/images', 'f/24768940/images', $result->body_value);
     //$result->new_body = str_replace('50226711/images', 'f/50226711/images', $result->new_body);
     
-    
-  /*  
-  if(preg_match_all('/<div class="pic">
-	.*<img.*\/><br \/>
-	(.*)<a.*href="(.*)".*rel=.*>(.*)<\/a><\/div>/i', $new_body, $matches)) {
-  //if(preg_match('/<div class="pic">
-	//(.*)div>/i', $str, $matches)) {
-    dpm($matches);
-  
-    
-  $new_body = preg_replace('/<div class="pic">
-	.*<img(.*)\/><br \/>
-	(.*)<a.*href="(.*)".*rel=.*>(.*)<\/a><\/div>/i', '<div class="pic"><img$1/></div>', $new_body);
-  
-  
-    $result->author = array('name' => $matches[3][0], 'url' => $matches[2][0]);
-    
-    
-    $result->new_body = $new_body;
-  }
-//  elseif(preg_match('/(.*)\?\‚\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
-//    dpm($matches);
-//  
-//    
-////  $new_body = preg_replace('/<div class="pic">
-////	.*<img(.*)\/><br \/>
-////	(.*)<a.*href="(.*)".*rel=.*>(.*)<\/a><\/div>/i', '<div class="pic"><img$1/></div>', $new_body);
-//  
-//  
-//    //$result->author = array('name' => $matches[3][0], 'url' => $matches[2][0]);
-//    
-//    
-//    //$result->new_body = $new_body;
-//  }
-  
-  */
     
     
     if (strpos($new_body, '?‚?©')) {
@@ -190,24 +154,24 @@ function vb_misc_testPage() {
           ->execute();
 
 
-        /*
-        db_update('field_data_field_extra_data')
-          ->fields(array(
-            'field_extra_data_value' => $extra_data,
-          ))
-          ->condition('entity_id', $result->entity_id)
-          ->condition('entity_type', $result->entity_type)
-          ->execute();
 
-        db_update('field_revision_field_extra_data')
-          ->fields(array(
-            'field_extra_data_value' => $extra_data,
-          ))
-          ->condition('entity_id', $result->entity_id)
-          ->condition('entity_type', $result->entity_type)
-          ->execute();
+//        db_update('field_data_field_extra_data')
+//          ->fields(array(
+//            'field_extra_data_value' => $extra_data,
+//          ))
+//          ->condition('entity_id', $result->entity_id)
+//          ->condition('entity_type', $result->entity_type)
+//          ->execute();
+//
+//        db_update('field_revision_field_extra_data')
+//          ->fields(array(
+//            'field_extra_data_value' => $extra_data,
+//          ))
+//          ->condition('entity_id', $result->entity_id)
+//          ->condition('entity_type', $result->entity_type)
+//          ->execute();
 
-        */
+
       }
       
     }
@@ -217,29 +181,29 @@ function vb_misc_testPage() {
     //}
     
     
-    /*
-    // Need update an existing field.
-    db_update('field_data_body')
-      ->fields(array(
-        'entity_id' => $result->entity_id,
-        'revision_id'=> $result->entity_id,
-        'body_value' => $new_body,
-      ))
-      ->condition('entity_id', $result->entity_id)
-      ->condition('entity_type', $result->entity_type)
-      ->execute();
 
-    db_update('field_revision_body')
-      ->fields(array(
-        'entity_id' => $result->entity_id,
-        'revision_id'=> $result->entity_id,
-        'body_value' => $new_body,
-      ))
-      ->condition('entity_id', $result->entity_id)
-      ->condition('entity_type', $result->entity_type)
-      ->execute();
+    // Need update an existing field.
+//    db_update('field_data_body')
+//      ->fields(array(
+//        'entity_id' => $result->entity_id,
+//        'revision_id'=> $result->entity_id,
+//        'body_value' => $new_body,
+//      ))
+//      ->condition('entity_id', $result->entity_id)
+//      ->condition('entity_type', $result->entity_type)
+//      ->execute();
+//
+//    db_update('field_revision_body')
+//      ->fields(array(
+//        'entity_id' => $result->entity_id,
+//        'revision_id'=> $result->entity_id,
+//        'body_value' => $new_body,
+//      ))
+//      ->condition('entity_id', $result->entity_id)
+//      ->condition('entity_type', $result->entity_type)
+//      ->execute();
      
-     */
+
     
     //break;
   }
@@ -247,7 +211,7 @@ function vb_misc_testPage() {
   field_cache_clear();
   
   dpm($bodies);
-  
+*/  
   
   
   /*
@@ -314,15 +278,6 @@ Granted the phones I have are probably a couple of years old by now. Maybe there
   */
   
   
-//  if(preg_match('/(.*)(\?\‚\?\©)(.*)/i', $str, $matches)) {
-//    dpm($matches);
-//  }
-  
-  
-  //$str = preg_replace('/(.*)?‚?© <a.*href=".*".*>.*<\/a>(.*)/i', '$1$2', $str);
-  
-  //dpm($str);
-  
     
   /*
   $query = db_select('mt_comment_EXPORT', 'c')
@@ -386,6 +341,15 @@ Granted the phones I have are probably a couple of years old by now. Maybe there
   }
   */
 
+  
+  
+  $file_name = 'http://www.voip-weblog.com/f/50226711/images/EP-880 VoIP phone.JPG';
+  $file_name = '/f/50226711/images/EP-880 VoIP phone.JPG';
+  
+  $file_name_new = '/f/50226711/images/EP-880_VoIP_phone.JPG';
+  copy($file_name, $file_name_new);
+  
+  
   
   return $out . '<br>End of Test';
 }
@@ -1864,6 +1828,7 @@ function vb_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charact
   
   if ($found_image) {
     $main_image['src_original'] = $main_image['src'];
+    
     $main_image['src'] = str_replace('%20', ' ', $main_image['src']);
     if ($thumbnail_fid) {
       // if is used a separate thumbnail image field.
