@@ -146,6 +146,36 @@ function vb_misc_testPage() {
         
         $guest_author = $matches[3] . '; ' . $matches[2];
         $out .= '<div><div>' . $guest_author . '<div>' . l($result->entity_id, 'node/' . $result->entity_id) . '</div></div>';
+        
+        $query = db_select('field_data_field_extra_data', 'd')
+          ->fields('d', array('field_extra_data_value'));
+        $query->condition('entity_id', $result->entity_id);
+        $extra_data = $query->execute()->fetchField();
+        
+        if ($extra_data) {
+          $extra_data = unserialize($extra_data);
+        }
+         $extra_data['guest_author'] = $guest_author;
+         
+        $extra_data = serialize($extra_data);
+        
+        db_update('field_data_field_extra_data')
+          ->fields(array(
+            'field_extra_data_value' => $extra_data,
+          ))
+          ->condition('entity_id', $result->entity_id)
+          ->condition('entity_type', $result->entity_type)
+          ->execute();
+
+        db_update('field_revision_field_extra_data')
+          ->fields(array(
+            'field_extra_data_value' => $extra_data,
+          ))
+          ->condition('entity_id', $result->entity_id)
+          ->condition('entity_type', $result->entity_type)
+          ->execute();
+
+  
       }
       
     }
