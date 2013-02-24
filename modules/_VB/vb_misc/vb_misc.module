@@ -345,7 +345,9 @@ Granted the phones I have are probably a couple of years old by now. Maybe there
   
   $file_name = 'http://www.voip-weblog.com/f/50226711/images/EP-880 VoIP phone.JPG';
   
-  $file_name = 'f/50226711/images/EP-880 VoIP phone.JPG';
+  
+  //$file_name = 'f/50226711/images/EP-880 VoIP phone.JPG';
+  $file_name = 'f/50226711/images/EP-880%20VoIP%20phone.JPG';
   $file_name_new = 'f/50226711/images/EP-880_VoIP_phone.JPG';
   
   copy($file_name, $file_name_new);
