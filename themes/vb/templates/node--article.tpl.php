@@ -131,20 +131,18 @@
               hide($content['body']);
 
               if (!empty($node->body['und'][0]['summary'])) {
-                dpm('Summary is not empty... Using');
+                //dpm('Summary is not empty... Using');
                 //echo l('Read more »', 'node/' . $node->nid, array('attributes' => array('class' => array('more')))) . strip_tags($node->body['und'][0]['summary']);
                 echo l('Read more »', 'node/' . $node->nid, array('attributes' => array('class' => array('more')))) . $node->body['und'][0]['summary'];
               }
               else{
                 
                 if (!empty($node->field_a_teaser['und'][0]['value'])) {
-                  dpm('field_a_teaser IS NOT empty');
+                  //dpm('field_a_teaser IS NOT empty');
                   $teaser_data['teaser'] = $node->field_a_teaser['und'][0]['value'];
                 }
                 else {
-                  dpm('field_a_teaser is empty');
-                  dpm($content);
-                  dpm($node);
+                  //dpm('field_a_teaser is empty');
                   //$teaser_data = vb_misc_getArticleTeaserData('all', $content['body'][0]['#markup'], $node->nid);
                   $teaser_data = vb_misc_getArticleTeaserData('all', $node->body['und'][0]['value'], $node->nid);
                 }
