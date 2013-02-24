@@ -350,8 +350,9 @@ Granted the phones I have are probably a couple of years old by now. Maybe there
   //$file_name = 'f/50226711/images/EP-880%20VoIP%20phone.JPG';
   $file_name_new = 'f/50226711/images/EP-880_VoIP_phone.JPG';
   
-  copy($file_name, $file_name_new);
-  
+  if (!file_exists($file_name_new)) {
+    copy($file_name, $file_name_new);
+  }
   
   
   return $out . '<br>End of Test';
@@ -1833,6 +1834,32 @@ function vb_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charact
     $main_image['src_original'] = $main_image['src'];
     
     $main_image['src'] = str_replace('%20', ' ', $main_image['src']);
+    
+    if (strpos($main_image['src'], ' ')) {
+      $main_image['src_new'] = str_replace(' ', '_', $main_image['src']);
+      
+      $file_name = str_replace('http://www.voip-weblog.com/', '', $main_image['src']);
+      $file_name_new = str_replace('http://www.voip-weblog.com/', '', $main_image['src_new']);
+      
+      if (!file_exists($file_name_new)) {
+        copy($file_name, $file_name_new);
+      }
+      
+      $main_image['src'] = $main_image['src_new'];
+    }
+    
+//  
+//  $file_name = 'f/50226711/images/EP-880 VoIP phone.JPG';
+//  //$file_name = 'f/50226711/images/EP-880%20VoIP%20phone.JPG';
+//  $file_name_new = 'f/50226711/images/EP-880_VoIP_phone.JPG';
+//  
+//  if (!file_exists($file_name_new)) {
+//    copy($file_name, $file_name_new);
+//  }
+//  
+  
+  
+    
     if ($thumbnail_fid) {
       // if is used a separate thumbnail image field.
       $stream_path = $main_image['uri'];
@@ -1845,10 +1872,9 @@ function vb_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charact
     
 
     
-    //$image_size = getimagesize(ltrim($main_image['src'], '/'));
-    $image_size = getimagesize(ltrim($main_image['src_original'], '/'));
+    $image_size = getimagesize(ltrim($main_image['src'], '/'));
 
-    dpm($image_size);
+    //dpm($image_size);
     
     // Scale and cut.
     /*
