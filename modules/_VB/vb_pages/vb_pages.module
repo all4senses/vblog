@@ -355,7 +355,7 @@ function vb_pages_getBlogArchivePage($url) {
   $results = $query->execute();
 
   foreach ($results as $result) {
-    dpm($result->nid);
+    dpm($result);
     $n = node_load($result->nid);
     $out .= render(node_view($n, 'teaser'));
   }
