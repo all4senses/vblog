@@ -86,7 +86,7 @@ function vb_misc_testPage() {
   
   //vb_misc_import_remote_blogPosts();
   
-  
+  /*
   $query = db_select('field_data_body', 'b')
     ->fields('b');
   $query->condition('bundle', 'blog_post');
@@ -133,6 +133,12 @@ function vb_misc_testPage() {
   field_cache_clear();
   
   dpm($bodies);
+  */
+  
+  $str = '/f/24768940/images/flickr_4806180462.jpg';
+  
+  $str = preg_replace('|^/f/  \[video:.*(http.*)\]|', '<a href="$1"> [Watch a video] </a>', $str);
+  dpm('after = ' . $str);
   
   /*
   $query = db_select('mt_comment_EXPORT', 'c')
@@ -1855,7 +1861,7 @@ function vb_misc_getStreamUriFromRelativePath($path) {
 
   $stream_path = str_replace('http://www.voip-weblog.com', '', $path);
   $stream_path = ltrim($stream_path, '/');
-  return $file_default_scheme . ':/' . str_replace($default_file_path, '', $stream_path);
+  return $file_default_scheme . '://' . str_replace($default_file_path . '/', '', $stream_path);
 }
 
 
