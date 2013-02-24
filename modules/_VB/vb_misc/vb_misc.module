@@ -1863,8 +1863,8 @@ function vb_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charact
   
   
   if ($found_image) {
-    
-    //$main_image['src'] = str_replace('%20', ' ', $main_image['src']);
+    $main_image['src_original'] = $main_image['src'];
+    $main_image['src'] = str_replace('%20', ' ', $main_image['src']);
     if ($thumbnail_fid) {
       // if is used a separate thumbnail image field.
       $stream_path = $main_image['uri'];
@@ -1876,7 +1876,9 @@ function vb_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charact
     
     
 
-    $image_size = getimagesize(ltrim($main_image['src'], '/'));
+    
+    //$image_size = getimagesize(ltrim($main_image['src'], '/'));
+    $image_size = getimagesize(ltrim($main_image['src_original'], '/'));
 
     dpm($image_size);
     
