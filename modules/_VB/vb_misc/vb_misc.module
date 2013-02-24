@@ -86,7 +86,7 @@ function vb_misc_testPage() {
   
   //vb_misc_import_remote_blogPosts();
   
-  /*
+  
   $query = db_select('field_data_body', 'b')
     ->fields('b');
   $query->condition('bundle', 'blog_post');
@@ -109,12 +109,37 @@ function vb_misc_testPage() {
     
     
     
+    
+  if(preg_match_all('/<div class="pic">
+	.*<img.*\/><br \/>
+	(.*)<a.*href="(.*)".*rel=.*>(.*)<\/a><\/div>/i', $new_body, $matches)) {
+  //if(preg_match('/<div class="pic">
+	//(.*)div>/i', $str, $matches)) {
+    //dpm($matches);
+  
+    
+  $new_body = preg_replace('/<div class="pic">
+	.*<img(.*)\/><br \/>
+	(.*)<a.*href="(.*)".*rel=.*>(.*)<\/a><\/div>/i', '<div class="pic"><img$1/></div>', $new_body);
+  
+  
+    $result->author = array('name' => $matches[3][0], 'url' => $matches[2][0]);
+    
+    
     $result->new_body = $new_body;
+  }
+  
+  
+  
+    
+    
+    
+    
             
     $bodies[] = $result;
     
     
-    
+    /*
     // Need update an existing field.
     db_update('field_data_body')
       ->fields(array(
@@ -135,6 +160,8 @@ function vb_misc_testPage() {
       ->condition('entity_id', $result->entity_id)
       ->condition('entity_type', $result->entity_type)
       ->execute();
+     
+     */
     
     //break;
   }
@@ -143,7 +170,7 @@ function vb_misc_testPage() {
   
   dpm($bodies);
   
-  */
+  
   
   
   $str = '<div class="pic">
