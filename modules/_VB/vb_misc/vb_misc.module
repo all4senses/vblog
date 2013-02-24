@@ -1809,7 +1809,7 @@ function vb_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charact
     $query->condition('fid', $thumbnail_fid);
     $main_image['uri'] = $query->execute()->fetchField();
     $main_image['src'] = vb_misc_getPathFromStreamUri($main_image['uri']);
-    dpm($main_image);
+    //dpm($main_image);
     $found_image = TRUE;
   }
   elseif (preg_match('/<img[^>]+>/i', $body_full_markup, $matches)) {
@@ -1819,6 +1819,11 @@ function vb_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charact
       $main_image[$key] = $matches[2][$index];
     }
     $body_full_markup = preg_replace('/<img[^>]+>/i', '', $body_full_markup);
+    
+    // Set No image for externally linked image.
+    if (strpos($main_image['src'], 'http') !== FALSE && !strpos($main_image['src'], 'www.voip-weblog.com')) {
+      $found_image = FALSE;
+    }
   }
   elseif (preg_match('/\[video:.*v=(.*)\]/i', $body_full_markup, $matches)) {
     // [video: https://www.youtube.com/watch?v=H1vdPJzzzAY]
@@ -1831,6 +1836,7 @@ function vb_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charact
   
   
   if ($found_image) {
+    
     $main_image['src_original'] = $main_image['src'];
     
     $main_image['src'] = str_replace('%20', ' ', $main_image['src']);
