@@ -146,6 +146,9 @@ function vb_misc_testPage() {
         
         $result->new_body = str_replace('Photo ?‚?©', 'Photo ©', $result->body_value);
         $result->new_body = str_replace('?‚?©', 'Photo ©', $result->new_body);
+        
+        $new_body = $result->new_body;
+        
         $bodies[] = $result;
         
         $guest_author = $matches[3] . '; ' . $matches[2];
@@ -165,6 +168,29 @@ function vb_misc_testPage() {
         
         $extra_data = '';
         
+        // Need update an existing field.
+        db_update('field_data_body')
+          ->fields(array(
+            'entity_id' => $result->entity_id,
+            'revision_id'=> $result->entity_id,
+            'body_value' => $new_body,
+          ))
+          ->condition('entity_id', $result->entity_id)
+          ->condition('entity_type', $result->entity_type)
+          ->execute();
+
+        db_update('field_revision_body')
+          ->fields(array(
+            'entity_id' => $result->entity_id,
+            'revision_id'=> $result->entity_id,
+            'body_value' => $new_body,
+          ))
+          ->condition('entity_id', $result->entity_id)
+          ->condition('entity_type', $result->entity_type)
+          ->execute();
+
+
+        /*
         db_update('field_data_field_extra_data')
           ->fields(array(
             'field_extra_data_value' => $extra_data,
@@ -181,7 +207,7 @@ function vb_misc_testPage() {
           ->condition('entity_type', $result->entity_type)
           ->execute();
 
-  
+        */
       }
       
     }
