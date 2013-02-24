@@ -144,7 +144,7 @@ function vb_misc_testPage() {
         $result->matches = $matches;
         
         
-        $result->new_body = str_replace('Photo ?‚?©', 'Photo ©', $result->new_body);
+        $result->new_body = str_replace('Photo ?‚?©', 'Photo ©', $result->body_value);
         $result->new_body = str_replace('?‚?©', 'Photo ©', $result->new_body);
         $bodies[] = $result;
         
