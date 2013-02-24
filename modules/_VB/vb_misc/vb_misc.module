@@ -86,7 +86,7 @@ function vb_misc_testPage() {
   
   //vb_misc_import_remote_blogPosts();
   
-  /*
+  
   $query = db_select('field_data_body', 'b')
     ->fields('b');
   $query->condition('bundle', 'blog_post');
@@ -98,10 +98,15 @@ function vb_misc_testPage() {
     $new_body = $result->body_value;
     
     
-    $result->new_body = str_replace('24768940/images', 'f/24768940/images', $result->body_value);
+    //$result->new_body = str_replace('24768940/images', 'f/24768940/images', $result->body_value);
     
-    $result->new_body = str_replace('50226711/images', 'f/50226711/images', $result->new_body);
-            
+    //$result->new_body = str_replace('50226711/images', 'f/50226711/images', $result->new_body);
+    
+
+    
+    $new_body = str_replace('f/f/f/', 'f/', $new_body);
+    $new_body = str_replace('f/f/', 'f/', $new_body);
+    
     $bodies[] = $result;
     
     
@@ -111,7 +116,7 @@ function vb_misc_testPage() {
       ->fields(array(
         'entity_id' => $result->entity_id,
         'revision_id'=> $result->entity_id,
-        'body_value' => $result->new_body,
+        'body_value' => $new_body,
       ))
       ->condition('entity_id', $result->entity_id)
       ->condition('entity_type', $result->entity_type)
@@ -121,7 +126,7 @@ function vb_misc_testPage() {
       ->fields(array(
         'entity_id' => $result->entity_id,
         'revision_id'=> $result->entity_id,
-        'body_value' => $result->new_body,
+        'body_value' => $new_body,
       ))
       ->condition('entity_id', $result->entity_id)
       ->condition('entity_type', $result->entity_type)
@@ -133,12 +138,8 @@ function vb_misc_testPage() {
   field_cache_clear();
   
   dpm($bodies);
-  */
   
-  $str = '/f/24768940/images/flickr_4806180462.jpg';
   
-  $str = preg_replace('|^/f/  \[video:.*(http.*)\]|', '<a href="$1"> [Watch a video] </a>', $str);
-  dpm('after = ' . $str);
   
   /*
   $query = db_select('mt_comment_EXPORT', 'c')
