@@ -1684,6 +1684,8 @@ function vb_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charact
       $main_image['uri'] = $stream_path;
     }
     
+    dpm($main_image);
+    
     $image_size = getimagesize(ltrim($main_image['src'], '/'));
 
     // Scale and cut.
