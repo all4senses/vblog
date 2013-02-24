@@ -243,9 +243,7 @@ I have phones from Linksys (SPA-841 and SPA-941), Grandstream (Budgetone 100, GX
 
 After looking over all these phones, I realize why I eventually got fed up with every single one of these phones: they&#39;re all too big. Every single one of them takes up too much desk space. If I want to make a call at my desk, I have Skype and a USB headset that works pretty well. If I need to get up, I have my mobile phone, which I can run VoIP on if I really want to. Better yet, I have a dedicated WiFi VoIP handset. 
 
-Granted the phones I have are probably a couple of years old by now. Maybe there&#39;s newer gear out there that&#39;s cooler? What do you think? 
-
-?‚?© <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.flickr.com/photos/exalthim/465504923/">Mr.Thomas</a>
+Granted the phones I have are probably a couple of years old by now. Maybe there&#39;s newer gear out there that&#39;s cooler? What do you think? ?‚?© <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.flickr.com/photos/exalthim/465504923/">Mr.Thomas</a>
 ';
     
   if(preg_match('/(.*)\?\‚\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
