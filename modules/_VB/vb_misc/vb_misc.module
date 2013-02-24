@@ -147,7 +147,7 @@ function vb_misc_testPage() {
     
     
     if (strpos($new_body, '?‚?©')) {
-      if(preg_match('/(.*)\?\‚\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
+      if(preg_match('/(.*)\?\‚\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $new_body, $matches)) {
         dpm($matches);
         $result->matches = $matches;
         $bodies[] = $result;
