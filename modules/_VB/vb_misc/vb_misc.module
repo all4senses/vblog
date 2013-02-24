@@ -248,7 +248,7 @@ Granted the phones I have are probably a couple of years old by now. Maybe there
 ?‚?© <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.flickr.com/photos/exalthim/465504923/">Mr.Thomas</a>
 ';
     
-  if(preg_match_all('/(.*)
+  if(preg_match('/(.*)
 
 ?‚?© <a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
     dpm($matches);
