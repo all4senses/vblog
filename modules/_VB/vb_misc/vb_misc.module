@@ -87,11 +87,50 @@ function vb_misc_testPage() {
   //vb_misc_import_remote_blogPosts();
   
   
+  $query = db_select('field_data_body', 'b')
+    ->fields('b');
+  $query->condition('bundle', 'blog_post');
+  $results = $query->execute();
   
+  foreach($results as $result) {
   
+    
+    $new_body = $result->body_value;
+    
+    
+    $result->new_body = str_replace('24768940/images', 'f/24768940/images', $result->body_value);
+    
+    $result->new_body = str_replace('50226711/images', 'f/50226711/images', $result->body_value);
+            
+    $bodies[] = $result;
+    
+    /*
+    // Need update an existing field.
+    db_update('field_data_body')
+      ->fields(array(
+        'entity_id' => $result->entity_id,
+        'revision_id'=> $result->entity_id,
+        'body_value' => $new_body,
+      ))
+      ->condition('entity_id', $result->entity_id)
+      ->condition('entity_type', $result->entity_type)
+      ->execute();
+
+    db_update('field_revision_body')
+      ->fields(array(
+        'entity_id' => $entity_id,
+        'revision_id'=> $entity_id,    
+        'body_value' => $new_body,
+      ))
+      ->condition('entity_id', $result->entity_id)
+      ->condition('entity_type', $result->entity_type)
+      ->execute();
+    */
+  }
   
+  dpm($bodies);
   
-  
+  /*
   $query = db_select('mt_comment_EXPORT', 'c')
     ->fields('c');
   $wp_comments = $query->execute();
@@ -151,7 +190,7 @@ function vb_misc_testPage() {
     //break;
     
   }
-  
+  */
 
   
   return $out . '<br>End of Test';
