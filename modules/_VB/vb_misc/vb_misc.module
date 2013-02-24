@@ -146,12 +146,11 @@ function vb_misc_testPage() {
   */
   
   
-  $str = '<div class="pic">
-	<img alt="Nokia Launches New Symbian 1Ghz Phone In India" border="0" src="http://www.voip-weblog.com/f/24768940/images/flickr_4806180462.jpg" /><br />
+  $str = '<div class="pic">	<img alt="Nokia Launches New Symbian 1Ghz Phone In India" border="0" src="http://www.voip-weblog.com/f/24768940/images/flickr_4806180462.jpg" /><br />
 	?‚?© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
   
   
-  $str = '<div class="pic">aaa</div>';
+  //$str = '<div class="pic">aaa</div>';
   
   //$str = preg_replace('|\[video:.*(http.*)\]|', '<a href="$1"> [Watch a video] </a>', $str);
   
