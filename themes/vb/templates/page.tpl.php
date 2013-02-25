@@ -8,6 +8,7 @@
       <div id="logo-block">
         <a href="<?php print $front_page; ?>" title="<?php print 'VoIP Weblog Home'; ?>" id="logo">
           <img src="<?php echo '/sites/all/themes/vb/css/images/vb-logo-top.png'; ?>" alt="VoIP Now" title="<?php print 'VoIP Weblog Home'; ?>" />
+          VoIP Now
         </a>
         
       </div>
