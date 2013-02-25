@@ -88,8 +88,15 @@ function vb_misc_testPage() {
   $query->condition('type', 'blog_post');
   $results = $query->execute()->fetchAllAssoc('nid');
   dpm($results);
-  foreach($results as $result) {
   
+  foreach($results as $result) {
+    if (!isset($titles[$result->title])) {
+      $titles[$result->title] = $result;
+    }
+    else {
+      dpm($titles[$result->title]);
+      dpm($result);
+    }
   }
   //vb_misc_import_remote_blogPosts();
   
