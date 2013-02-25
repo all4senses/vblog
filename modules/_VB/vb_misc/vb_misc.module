@@ -2637,7 +2637,7 @@ function vb_misc_url_outbound_alter(&$path, &$options, $original_path) {
 //    $options['fragment'] = 'zzz';
 //    //dpm($options);
 //  }
-  
+  dpm($path);
   if ($path == 'node/add/review') {
     $path = 'voip-provider-submit-user-review';
   }
