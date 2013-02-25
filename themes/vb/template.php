@@ -149,9 +149,9 @@ function vb_pager_previous($variables) {
 function vb_pager($variables) {
   
   // Hide a pager on the home page.
-  if($_GET['q'] == 'home') {
-    return NULL;
-  }
+//  if($_GET['q'] == 'home') {
+//    return NULL;
+//  }
   
   
 //  $arg_0 = arg(0);
