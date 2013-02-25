@@ -116,14 +116,14 @@ function vb_misc_testPage() {
     
     
     
-    if (strpos($new_body, '?‚?©')) {
-      if(preg_match('/(.*)\?\‚\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $new_body, $matches)) {
+    if (strpos($new_body, '?вЂљ?В©')) {
+      if(preg_match('/(.*)\?\вЂљ\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $new_body, $matches)) {
         dpm($matches);
         $result->matches = $matches;
         
         
-        $result->new_body = str_replace('Photo ?‚?©', 'Photo ©', $result->body_value);
-        $result->new_body = str_replace('?‚?©', 'Photo ©', $result->new_body);
+        $result->new_body = str_replace('Photo ?вЂљ?В©', 'Photo В©', $result->body_value);
+        $result->new_body = str_replace('?вЂљ?В©', 'Photo В©', $result->new_body);
         
         $new_body = $result->new_body;
         
@@ -231,13 +231,13 @@ function vb_misc_testPage() {
   /*
   $str = '<div class="pic">
 	<img alt="Nokia Launches New Symbian 1Ghz Phone In India" border="0" src="http://www.voip-weblog.com/f/24768940/images/flickr_4806180462.jpg" /><br />
-	?‚?© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
+	?вЂљ?В© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
   
   
 
   
   //$str = '<div class="pic">
-	//<img alt="Nokia Launches New Symbian 1Ghz Phone In India" border="0" src="http://www.voip-weblog.com/f/24768940/images/flickr_4806180462.jpg" /><br />?‚?© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
+	//<img alt="Nokia Launches New Symbian 1Ghz Phone In India" border="0" src="http://www.voip-weblog.com/f/24768940/images/flickr_4806180462.jpg" /><br />?вЂљ?В© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
   
   
   //$str = '<div class="pic">aaa</div>';
@@ -283,10 +283,10 @@ After looking over all these phones, I realize why I eventually got fed up with 
 
 Granted the phones I have are probably a couple of years old by now. Maybe there&#39;s newer gear out there that&#39;s cooler? What do you think? 
 
-?‚?© <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.flickr.com/photos/exalthim/465504923/">Mr.Thomas</a>
+?вЂљ?В© <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.flickr.com/photos/exalthim/465504923/">Mr.Thomas</a>
 ';
     
-  if(preg_match('/(.*)\?\‚\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
+  if(preg_match('/(.*)\?\вЂљ\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
     dpm($matches);
   }
   */
@@ -1979,7 +1979,7 @@ function vb_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charact
   $last_pos = strrpos($teaser, ' ');
   
   // $teaser = substr_replace ($teaser, '...' . l(t('Read More'), 'node/' . $nid, array('attributes' => array('class' => array('more')))) , $last_pos, strlen($matches[1]));
-  ////$teaser = substr_replace ($teaser, '...' . l('Read the rest of this entry »', 'node/' . $nid, array('attributes' => array('class' => array('more')))), $last_pos);
+  ////$teaser = substr_replace ($teaser, '...' . l('Read the rest of this entry В»', 'node/' . $nid, array('attributes' => array('class' => array('more')))), $last_pos);
   $teaser = substr_replace ($teaser, '...', $last_pos);
   
   
@@ -2638,6 +2638,7 @@ function vb_misc_url_outbound_alter(&$path, &$options, $original_path) {
 //    //dpm($options);
 //  }
   dpm($path);
+  dpm($options);
   if ($path == 'node/add/review') {
     $path = 'voip-provider-submit-user-review';
   }
@@ -4947,7 +4948,7 @@ function vb_misc_getProviderQuickData($target, $data) {
         $out = theme('vb_misc_fivestar_static', array('rating' => $all_data_quick[$data['data']->nid]['erating'], 'stars' => 5, 'tag' => 'overall', 'widget' => array('name' => 'stars', 'css' => 'stars.css')));
       }
       
-      $out .= '<div class="link">' . l('Read review »', 'node/' . $data['data']->nid) . '</div>';
+      $out .= '<div class="link">' . l('Read review В»', 'node/' . $data['data']->nid) . '</div>';
       
       return $out;
       
