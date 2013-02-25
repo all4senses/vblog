@@ -2641,6 +2641,7 @@ function vb_misc_url_outbound_alter(&$path, &$options, $original_path) {
   if($path == 'home') {
     dpm($path);
     dpm($options);
+    $path = '';
   }
   
   if ($path == 'node/add/review') {
