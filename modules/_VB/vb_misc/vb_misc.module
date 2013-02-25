@@ -84,7 +84,7 @@ function vb_misc_testPage() {
   $out = '<div>Start test...</div>';
 
   $query = db_select('node', 'n')
-    ->fields('n', array('nid'));
+    ->fields('n', array('nid', 'title'));
   $query->condition('type', 'blog_post');
   $results = $query->execute()->fetchAllAssoc('title');
   dpm($results);
