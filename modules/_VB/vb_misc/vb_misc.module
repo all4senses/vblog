@@ -83,7 +83,14 @@ function vb_misc_testPage() {
   
   $out = '<div>Start test...</div>';
 
+  $query = db_select('node', 'n')
+    ->fields('n', array('nid'));
+  $query->condition('type', 'blog_post');
+  $results = $query->execute()->fetchAllAssoc('title');
+  dpm($results);
+  foreach($results as $result) {
   
+  }
   //vb_misc_import_remote_blogPosts();
   
   /*
@@ -342,17 +349,6 @@ Granted the phones I have are probably a couple of years old by now. Maybe there
   */
 
   
-  
-  $file_name = 'http://www.voip-weblog.com/f/50226711/images/EP-880 VoIP phone.JPG';
-  
-  
-  $file_name = 'f/50226711/images/EP-880 VoIP phone.JPG';
-  //$file_name = 'f/50226711/images/EP-880%20VoIP%20phone.JPG';
-  $file_name_new = 'f/50226711/images/EP-880_VoIP_phone.JPG';
-  
-  if (!file_exists($file_name_new)) {
-    copy($file_name, $file_name_new);
-  }
   
   
   return $out . '<br>End of Test';
