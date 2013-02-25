@@ -2604,7 +2604,8 @@ function vb_misc_url_inbound_alter(&$path, $original_path, $path_language) {
   dpm($path);
   if($path == 'home/3') {
     dpm($original_path);
-    $path = '?home=3';
+    //$path = '?home=3';
+    $path = '';
   }
   if ($path == 'voip-provider-submit-user-review') {
     $path = 'node/add/review';
