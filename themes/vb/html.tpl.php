@@ -8,7 +8,7 @@
   <?php print $head; ?>
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=UnifrakturMaguntia">
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=UnifrakturCook">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=UnifrakturCook:700">
   
   
   <!-- Set the viewport width to device width for mobile -->
