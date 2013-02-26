@@ -8,6 +8,8 @@
   <?php print $head; ?>
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=UnifrakturMaguntia">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=UnifrakturCook">
+  
   
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width" />
