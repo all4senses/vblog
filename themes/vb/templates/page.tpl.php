@@ -159,16 +159,17 @@
       <div id="in-touch"></div>
 
       <?php 
-        echo render($page['footer']);
+        //echo render($page['footer']);
         
         //echo vb_blocks_getBlockThemed(array('module' => 'vb_blocks', 'delta' => 'send_msg_n_subscribe', 'no_subject' => TRUE/*, 'class' => 'block-om-maximenu'*/, 'shadow' => FALSE)/*, TRUE, '+31 day'*/ /*, ($user->uid ? '_logged' : NULL)*/);
-        echo vb_blocks_getBlockThemed(array('module' => 'vb_blocks', 'delta' => 'social_links', 'no_subject' => TRUE/*, 'class' => 'block-om-maximenu'*/, 'shadow' => FALSE)/*, TRUE, '+31 day'*/ /*, ($user->uid ? '_logged' : NULL)*/);
-        echo vb_blocks_getBlockThemed(array('module' => 'vb_blocks', 'delta' => 'footer_links', 'no_subject' => TRUE/*, 'class' => 'block-om-maximenu'*/, 'shadow' => FALSE)/*, TRUE, '+31 day'*/ /*, ($user->uid ? '_logged' : NULL)*/);
         
-        //echo '<div id="block-vb-blocks-follow-links"><div class="follow-us">Follow Us</div>', vb_blocks_get_headerLinks(), '</div>';
+//        echo vb_blocks_getBlockThemed(array('module' => 'vb_blocks', 'delta' => 'social_links', 'no_subject' => TRUE/*, 'class' => 'block-om-maximenu'*/, 'shadow' => FALSE)/*, TRUE, '+31 day'*/ /*, ($user->uid ? '_logged' : NULL)*/);
+//        echo vb_blocks_getBlockThemed(array('module' => 'vb_blocks', 'delta' => 'footer_links', 'no_subject' => TRUE/*, 'class' => 'block-om-maximenu'*/, 'shadow' => FALSE)/*, TRUE, '+31 day'*/ /*, ($user->uid ? '_logged' : NULL)*/);
+        
+        
       ?>
       
-      <div class="c">Copyright В© 2004-2013 voip-weblog.com</div>
+      <div class="c">Copyright © 2005-2013 voip-weblog.com</div>
     </div>
   </footer> <!-- /#footer -->
 
