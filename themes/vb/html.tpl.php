@@ -6,8 +6,8 @@
 <head>
   <title><?php global $altered_head_title; if ($altered_head_title) {print $altered_head_title;} else {print $head_title;} ?></title>
   <?php print $head; ?>
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=UnifrakturMaguntia">
+  <!--<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=UnifrakturMaguntia">-->
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=UnifrakturCook:700">
   
   
