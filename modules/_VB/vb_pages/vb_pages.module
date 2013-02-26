@@ -1476,7 +1476,7 @@ function vb_pages_form_alter(&$form, &$form_state, $form_id) {
             );
             $form['bottom_text']['center_text'] = array(
               '#type' => 'textarea',
-              '#title' => t('Сenter text'),
+              '#title' => t('РЎenter text'),
               //'#description' => t(''),
               '#default_value' => isset($data['bottom_text']['center_text']) ? $data['bottom_text']['center_text'] : '',
             );
@@ -1795,7 +1795,7 @@ function vb_pages_form_alter(&$form, &$form_state, $form_id) {
               
               $form['s'][$service_type_key] = array(
                 '#type' => 'fieldset',
-                '#title' => t("$service_type_title serviсes"),
+                '#title' => t("$service_type_title serviСЃes"),
                 '#collapsible' => TRUE,
                 '#collapsed' => TRUE,
                 '#states' => array(
@@ -3574,9 +3574,13 @@ function vb_pages_node_view($node, $view_mode) {
     break; // End of Preface
     
     
-    
-    case 'provider_type':
     case 'blog_post':
+
+        $module_path = drupal_get_path('module', 'vb_misc');
+        drupal_add_js( $module_path . '/js/vb_trackOldLinks.js'); 
+        
+    case 'provider_type':
+
       
       if ($view_mode == 'full') {
 //        drupal_add_js('sites/all/libraries/jquery.plugins/stickyfloat/stickyfloat2.js');
