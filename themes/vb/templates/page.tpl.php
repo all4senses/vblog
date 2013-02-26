@@ -10,7 +10,7 @@
           <?php /*
           <img src="<?php echo '/sites/all/themes/vb/css/images/vb-logo-top.png'; ?>" alt="VoIP Now" title="<?php print 'VoIP Weblog Home'; ?>" />
           */ ?>
-          VoIP Now
+          VoIP-Weblog
         </a>
         
       </div>
