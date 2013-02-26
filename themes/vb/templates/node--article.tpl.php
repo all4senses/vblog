@@ -208,9 +208,9 @@
   
     
   <?php 
-    if ($page) {
-      echo '<a id="comments"></a>', render($content['disqus']), render($content['comments']); 
-    }
+//    if ($page) {
+//      echo '<a id="comments"></a>', render($content['disqus']);//, render($content['comments']); 
+//    }
   ?>
 
 <?php if (!$page): ?>
