@@ -113,7 +113,7 @@ function vb_blocks_block_view($delta = '') {
  * Returns a themed submenu block content for OM menu.
  */
 function vb_blocks_get_omMenuBlockSubmenu($submenu) {
-  return theme('vn_misc_submenuSimple', array('submenu' => $submenu, 'class' => 'block'));
+  return theme('vb_misc_submenuSimple', array('submenu' => $submenu, 'class' => 'block'));
 }
 
 
