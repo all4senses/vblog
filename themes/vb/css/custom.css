@@ -183,7 +183,7 @@ ul.vb{margin-left: 0px; padding-left: 10px;}
 
 
 /* set constant position for om submenu block*/
-.om-maximenu.om-maximenu-block ul.om-menu {width: 1089px; margin-left: 50px;}
+.om-maximenu.om-maximenu-block ul.om-menu {width: 1075px; margin-left: 25px;}
 
 .om-maximenu ul.om-menu li.om-leaf{top: -2px;}
 
@@ -201,7 +201,7 @@ body.not-admin #om-menu-main-om-menu li.om-leaf.leaf-write-review{background: no
 .om-maximenu ul.om-menu li.om-leaf .om-link.link-e{padding: 4px 8px 8px 8px;}
 
 
-.om-maximenu ul.om-menu li.om-leaf a.om-link{padding: 4px 50px 10px; font-size: 15px; color: lightgray;}
+.om-maximenu ul.om-menu li.om-leaf a.om-link{padding: 4px 7px 10px 3px; font-size: 12px; color: lightgray;}
 /*.om-maximenu ul.om-menu li.om-leaf.first a.om-link{border-radius: 5px 0 0 0;}*/
 
 .om-maximenu ul.om-menu li.om-leaf:hover om-link, 
