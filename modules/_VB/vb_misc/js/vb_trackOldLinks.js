@@ -1,7 +1,9 @@
+function tracking(url){
+  console.log('track - ' + url);
+}
+      
 jQuery(document).ready(function(){
-      function tracking(url){
-        console.log('track - ' + url);
-      }  
+        
       
        tracking('yyy');
 	});
