@@ -13,17 +13,17 @@
  * Implements hook_block_info().
  */
 function vb_blocks_block_info() {
-  /*
+  
   $blocks['main_menu_om_providers'] = array(
-    'info' => 'OM VoIP Providers',
+    'info' => 'OM Providers',
     'cache' => DRUPAL_NO_CACHE,
   ); 
   
-  $blocks['main_menu_om_types'] = array(
-    'info' => 'OM VoIP Types',
+  $blocks['main_menu_om_didYouKnow'] = array(
+    'info' => 'OM Did You Know',
     'cache' => DRUPAL_NO_CACHE,
   );
-  
+  /*
   $blocks['main_menu_om_blog'] = array(
     'info' => 'OM Blog',
     'cache' => DRUPAL_NO_CACHE,
@@ -63,17 +63,18 @@ function vb_blocks_block_info() {
 function vb_blocks_block_view($delta = '') {
   $block = array();
   switch ($delta) {  
-    /*
+    
     case 'main_menu_om_providers':
-      $block['subject'] = 'OM VoIP Providers';
-      $block['content'] = vb_blocks_get_omMenuBlock_byTitle('VoIP Providers', 'vb_blocks_get_omMenuBlock_Providers');
+      $block['subject'] = 'OM Providers';
+      $block['content'] = vb_blocks_get_omMenuBlock_byTitle('Providers', 'vb_blocks_get_omMenuBlockSubmenu');
       break;
     
-    case 'main_menu_om_types':
-      $block['subject'] = 'OM VoIP Types';
-      $block['content'] = vb_blocks_get_omMenuBlock_byTitle('Types Of VoIP', 'vb_blocks_get_omMenuBlock_Types');
+    case 'main_menu_om_didYouKnow':
+      $block['subject'] = 'OM Did You Know';
+      $block['content'] = vb_blocks_get_omMenuBlock_byTitle('Did you know', 'vb_blocks_get_omMenuBlockSubmenu');
       break;
     
+    /*
     case 'main_menu_om_blog':
       $block['subject'] = 'OM Blog';
       $block['content'] = vb_blocks_get_omMenuBlock_byTitle('Blog', 'vb_blocks_get_omMenuBlock_Blog');
@@ -106,6 +107,13 @@ function vb_blocks_block_view($delta = '') {
   }
 
   return $block;
+}
+
+/**
+ * Returns a themed submenu block content for OM menu.
+ */
+function vb_blocks_get_omMenuBlockSubmenu($submenu) {
+  return theme('vn_misc_submenuSimple', array('submenu' => $submenu, 'class' => 'block'));
 }
 
 
