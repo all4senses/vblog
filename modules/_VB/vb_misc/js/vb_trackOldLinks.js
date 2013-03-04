@@ -1,5 +1,6 @@
 function tracking(url){
-  console.log('track - ' + url);
+  //works!
+  //console.log('track - ' + url);
 }
       
 //jQuery(document).ready(function(){
