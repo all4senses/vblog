@@ -808,6 +808,7 @@ function vb_username($object) {
 */
 function vb_preprocess_views_view_rss(&$vars) {
   $namespaces = $vars['view']->style_plugin->namespaces;
+  /*
   $disabled_namespaces = array('content', 'dc', 'foaf', 'og', 'rdfs', 'sioc', 'sioct', 'skos', 'xsd', 'xmlns:addthis');
   foreach ($disabled_namespaces as $disabled_namespace) {
     if (isset($namespaces[$disabled_namespace])) {
@@ -818,6 +819,39 @@ function vb_preprocess_views_view_rss(&$vars) {
   foreach ($namespaces as $key => $value) {
     $vars['namespaces'] .= ' ' . $key . '="' . $value . '"';
   }
+  
+  */
+  
+  $disabled_namespaces = array('content', /*'dc',*/ 'foaf', 'og', 'rdfs', 'sioc', 'sioct', 'skos', 'xsd', 'xmlns:xmlns:addthis');
+    
+        // FIX bad names
+    foreach ($namespaces as $key => $value) {
+      $key_new = str_replace('xmlns:xmlns:', 'xmlns:', $key);
+      if ($key_new != $key) {
+        $namespaces[$key_new] = $value;
+        unset($namespaces[$key]);
+      }
+    }
+
+     foreach ($disabled_namespaces as $disabled_namespace) {
+      
+      foreach ($namespaces as $key => $value) {
+        if (strpos($key, $disabled_namespace) != FALSE) {
+          unset($namespaces[$key]);
+        }
+      }
+      
+      
+    }
+    
+    
+    $vars['namespaces'] = '';
+    foreach ($namespaces as $key => $value) {
+      $vars['namespaces'] .= ' ' . $key . '="' . $value . '"';
+    }
+    
+
+  
 }
 
 
@@ -859,7 +893,15 @@ function vb_preprocess_views_view_row_rss(&$vars) {
   }
   
   // Replace username with real user name for <dc:creator>
-  $vars['item_elements'] = preg_replace('|<dc:creator>.*</dc:creator>|', '<dc:creator>' . vb_misc_getUserRealName($node->uid) . '</dc:creator>', $vars['item_elements']);
+  ///$vars['item_elements'] = preg_replace('|<dc:creator>.*</dc:creator>|', '<dc:creator>' . vb_misc_getUserRealName($node->uid) . '</dc:creator>', $vars['item_elements']);
+  $extra_data = unserialize($node->field_extra_data['und'][0]['value']);
+  if (!empty($extra_data['guest_author'])) {
+    $vars['item_elements'] = preg_replace('|<dc:creator>.*</dc:creator>|', '<dc:creator>' . $extra_data['guest_author'] . '</dc:creator>', $vars['item_elements']);
+    $vars['item_elements'] = preg_replace('|<dc:creator />|', '<dc:creator>' . $extra_data['guest_author'] . '</dc:creator>', $vars['item_elements']);
+  }
+  else {
+    $vars['item_elements'] = preg_replace('|<dc:creator>.*</dc:creator>|', '<dc:creator>' . vb_misc_getUserRealName($node->uid) . '</dc:creator>', $vars['item_elements']);
+  }
 }
 
 
