@@ -201,17 +201,18 @@ body.not-admin #om-menu-main-om-menu li.om-leaf.leaf-write-review{background: no
 .om-maximenu ul.om-menu li.om-leaf .om-link.link-e{padding: 4px 8px 8px 8px;}
 
 
-.om-maximenu ul.om-menu li.om-leaf a.om-link{padding: 4px 7px 10px 3px; font-size: 12px;}
-/*.om-maximenu ul.om-menu li.om-leaf.first a.om-link{border-radius: 5px 0 0 0;}*/
+.om-maximenu ul.om-menu li.om-leaf a.om-link{padding: 9px 7px 10px 3px; font-size: 12px;}
+
+.om-maximenu ul.om-menu li.om-leaf.first a.om-link{padding-left: 17px; border-radius: 5px 0 0 0;}
 
 .om-maximenu ul.om-menu li.om-leaf:hover om-link, 
 .om-maximenu ul.om-menu li.om-leaf:hover a.om-link{color: white;}
 
 #om-menu-main-om-menu li.om-leaf:hover a.om-link
 /*.om-leaf a:hover */
-{background: #0b75b6; height: 38px !important; overflow: hidden; position: relative; left: -2px;}
+{background: #0b75b6; height: 32px !important; overflow: hidden; position: relative; left: -2px;}
 
-#om-menu-main-om-menu li.first.om-leaf:hover a.om-link {padding-left: 10px; border-radius: 5px 0 0 0;}
+
 
 
 /*Make screen wide width for om submenu block */
