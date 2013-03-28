@@ -173,7 +173,7 @@ div.error{border: none;}
 
 
 ul.vb{margin-left: 0px; padding-left: 10px;}
-.block.block-om-maximenu{left: 13px; position: absolute; top: 141px; z-index: 10; background: red; height: 50px; width: 1073px; border-radius: 5px 5px 0 0; background: url("images/main-menu-back.jpg") repeat-x scroll 0 0 lightgray;}
+.block.block-om-maximenu{left: 13px; position: absolute; top: 141px; z-index: 10; height: 50px; width: 1073px; border-radius: 5px 5px 0 0; background: url("images/main-menu-back.jpg") repeat-x scroll 0 0 lightgray; overflow: hidden;}
 
 
 .om-btitle {float: left; position: absolute; left: -180px;}
@@ -183,7 +183,7 @@ ul.vb{margin-left: 0px; padding-left: 10px;}
 
 
 /* set constant position for om submenu block*/
-.om-maximenu.om-maximenu-block ul.om-menu {width: 1075px; margin-left: 25px;}
+.om-maximenu.om-maximenu-block ul.om-menu {width: 1075px; /*margin-left: 25px;*/}
 
 .om-maximenu ul.om-menu li.om-leaf{top: -2px;}
 
@@ -209,8 +209,9 @@ body.not-admin #om-menu-main-om-menu li.om-leaf.leaf-write-review{background: no
 
 #om-menu-main-om-menu li.om-leaf:hover a.om-link
 /*.om-leaf a:hover */
-{background: url("/sites/all/themes/vb/css/images/main-menu-hover.png") repeat-x 0 6px; height: 28px !important; overflow: hidden; position: relative; left: -2px;}
+{background: #0b75b6; height: 38px !important; overflow: hidden; position: relative; left: -2px;}
 
+#om-menu-main-om-menu li.first.om-leaf:hover a.om-link {padding-left: 20px; border-radius: 5px 0 0 0;}
 
 
 /*Make screen wide width for om submenu block */
