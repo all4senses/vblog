@@ -187,7 +187,7 @@ ul.vb{margin-left: 0px; padding-left: 10px;}
 
 .om-maximenu ul.om-menu li.om-leaf{top: -2px;}
 
-#om-menu-main-om-menu li.om-leaf{position: relative; background: url("images/menu-devisor.jpg") no-repeat scroll right 7px transparent; height: 42px; z-index: 400; /*padding: 0 43px 0 38px;*/}
+#om-menu-main-om-menu li.om-leaf{position: relative; /*background: url("images/menu-devisor.jpg") no-repeat scroll right 7px transparent; */height: 42px; z-index: 400; /*padding: 0 43px 0 38px;*/ }
 #om-menu-main-om-menu li.om-leaf.first{padding-left: 0;}
 
 #om-menu-main-om-menu li.om-leaf.leaf-about-us .om-maximenu-middle{width: 120px;}
@@ -196,7 +196,7 @@ ul.vb{margin-left: 0px; padding-left: 10px;}
 body.not-admin #om-menu-main-om-menu li.om-leaf.leaf-write-review{background: none;}
 
 
-.om-maximenu ul.om-menu li.om-leaf .om-link{line-height: 36px; color: #868686; /*font-weight: bold;*/ padding: 4px 14px 8px 14px;}
+.om-maximenu ul.om-menu li.om-leaf .om-link{line-height: 36px; color: #868686; /*font-weight: bold;*/ padding: 4px 14px 8px 14px; color: #0b75b6;}
 
 .om-maximenu ul.om-menu li.om-leaf .om-link.link-e{padding: 4px 8px 8px 8px;}
 
@@ -211,7 +211,7 @@ body.not-admin #om-menu-main-om-menu li.om-leaf.leaf-write-review{background: no
 /*.om-leaf a:hover */
 {background: #0b75b6; height: 38px !important; overflow: hidden; position: relative; left: -2px;}
 
-#om-menu-main-om-menu li.first.om-leaf:hover a.om-link {padding-left: 20px; border-radius: 5px 0 0 0;}
+#om-menu-main-om-menu li.first.om-leaf:hover a.om-link {padding-left: 10px; border-radius: 5px 0 0 0;}
 
 
 /*Make screen wide width for om submenu block */
