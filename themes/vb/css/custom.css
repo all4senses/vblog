@@ -173,7 +173,7 @@ div.error{border: none;}
 
 
 ul.vb{margin-left: 0px; padding-left: 10px;}
-.block.block-om-maximenu{left: 13px; position: absolute; top: 141px; z-index: 10; background: red; height: 50px; width: 1073px; border-radius: 5px 5px 0 0;}
+.block.block-om-maximenu{left: 13px; position: absolute; top: 141px; z-index: 10; background: red; height: 50px; width: 1073px; border-radius: 5px 5px 0 0; background: url("images/main-menu-back.jpg") repeat-x scroll 0 0 lightgray;}
 
 
 .om-btitle {float: left; position: absolute; left: -180px;}
