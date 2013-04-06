@@ -854,7 +854,7 @@ function vb_misc_goToExternalUrl() {
               ))
               ->execute();
             
-            drupal_goto( (strpos($url, 'http') ? $url : 'http://' . $url), array('external' => TRUE));
+            drupal_goto( (strpos($url, 'http') ? $url : 'http://' . $url), array('external' => TRUE), 301);
         }
         
         //break;
