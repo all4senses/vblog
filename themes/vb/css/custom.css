@@ -92,7 +92,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 
 
 
-#header #logo-block{color: #C5C5C5; left: 0; position: absolute; top: 7px; /*width: 500px;*/}
+#header #logo-block{color: #C5C5C5; left: 10px; position: absolute; top: 30px; /*width: 500px;*/}
 
 #header #logo{float: left; margin-bottom: 0; font-size: 50px; color: white; padding-top: 20px; /*font-family: UnifrakturCook;*/}
 
@@ -201,9 +201,11 @@ body.not-admin #om-menu-main-om-menu li.om-leaf.leaf-write-review{background: no
 .om-maximenu ul.om-menu li.om-leaf .om-link.link-e{padding: 4px 8px 8px 8px;}
 
 
-.om-maximenu ul.om-menu li.om-leaf a.om-link{padding: 9px 7px 10px 3px; font-size: 12px;}
+.om-maximenu ul.om-menu li.om-leaf a.om-link{padding: 9px 5px 10px 5px; font-size: 12px;}
 
 .om-maximenu ul.om-menu li.om-leaf.first a.om-link{padding-left: 17px; border-radius: 5px 0 0 0;}
+
+.om-maximenu ul.om-menu li.om-leaf.last a.om-link {border-radius: 0 5px 0 0; padding-right: 19px;}
 
 .om-maximenu ul.om-menu li.om-leaf:hover om-link, 
 .om-maximenu ul.om-menu li.om-leaf:hover a.om-link{color: white;}
