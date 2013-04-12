@@ -3,11 +3,16 @@
   <!-- <div class="inside"> -->
 <?php else: ?>
   <?php
-
     $url = 'http://www.voip-weblog.com'. url('node/' . $node->nid);
     echo '<div class="float share">' . vb_blocks_getSocialiteButtons($url, $node->title) . '</div>';
+  ?>
 
-    
+  <div class="main-content"> 
+<?php endif; ?>
+
+ 
+  <?php
+ 
     
     //$created_str = date('F d, Y', $node->created);
     $created_str = date('\<\d\i\v\>d\<\/\d\i\v\>\<\s\p\a\n\>F\<\/\s\p\a\n\>', $node->created);
@@ -47,11 +52,6 @@
               
   ?>
 
-  <div class="main-content"> 
-<?php endif; ?>
-
- 
-  
  
           
 
