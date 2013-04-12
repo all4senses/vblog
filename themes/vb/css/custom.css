@@ -10,7 +10,7 @@ body.one-sidebar.sidebar-second #main {background: white; padding: 5px 10px 10px
 
 body.sidebar-first #main {width: 790px; margin: 0 15px 0 0;}
 
-body.sidebar-first #sidebar-first {width: 290px; background: #f2f5f7; border-radius: 10px; border: 1px solid lightgray; margin: 15px;}
+body.sidebar-first #sidebar-first {width: 250px; background: #f2f5f7; border-radius: 10px; border: 1px solid lightgray; margin: 15px;}
 
 /*.region.region-sidebar-first {background: #f2f5f7; border-radius: 10px; border: 1px solid lightgray; margin: 15px;}*/
 
