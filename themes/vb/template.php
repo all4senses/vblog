@@ -761,6 +761,12 @@ function vb_preprocess_block(&$variables, $hook) {
   }
 
   $variables['title_attributes_array']['class'][] = 'block-title';
+  
+  // add odd/even zebra classes into the array of classes
+  $vars['classes_array'][] = $vars['block_zebra'];
+  if ($vars['block_id'] == 1) {
+    $vars['classes_array'][] = 'first';
+  }
 }
 
 

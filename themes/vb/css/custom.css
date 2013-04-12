@@ -8,9 +8,11 @@ body.two-sidebars #main {float: left; margin: 0 0 0 195px; padding: 0; width: 66
 /* Two columns layout */
 body.one-sidebar.sidebar-second #main {background: white; padding: 5px 10px 10px 10px; width: 825px;}
 
-body.sidebar-first #main {width: 790px;}
-body.sidebar-first #sidebar-first {width: 260px;}
+body.sidebar-first #main {width: 790px; margin: 0 15px 0 0;}
 
+body.sidebar-first #sidebar-first {width: 290px; background: #f2f5f7; border-radius: 10px; border: 1px solid lightgray; margin: 15px;}
+
+/*.region.region-sidebar-first {background: #f2f5f7; border-radius: 10px; border: 1px solid lightgray; margin: 15px;}*/
 
 a, a:focus{ -webkit-appearance: none; outline: none;}
 
@@ -545,9 +547,13 @@ td.views-field-php-7{font-size: 28px; font-weight: bold; color: orange; font-sty
 
 body.sidebar-second #sidebar-second{float: right; margin-right: 18px; padding: 18px 0 0; width: 220px;}
 
-.sidebar .top-line{background: url("images/sprite-0.png") no-repeat scroll 0 -2px transparent; height: 5px; margin: 12px 0 10px; width: 100%;}
+.sidebar .top-line{background: url("images/sprite-0.png") no-repeat scroll 0 -2px transparent; height: 5px; margin: 20px 0 15px 13px; width: 100%;}
+
 .sidebar .block{overflow: hidden; margin: 12px; position: relative; z-index: 1;}
-.sidebar .block-title{margin: 0; padding: 15px 7px 15px 10px; font-size: 16px; font-weight: bold; text-transform: capitalize; line-height: 18px;}
+
+
+.sidebar .block-title{margin: 0; padding: 0px 5px 3px 0; font-size: 16px; font-weight: bold; text-transform: capitalize; line-height: 18px; color: #1f99ee;}
+
 .sidebar .block li{list-style: none; clear: both;}
 
 
@@ -590,14 +596,10 @@ body.sidebar-second #sidebar-second{float: right; margin-right: 18px; padding: 1
 body.one-sidebar.sidebar-second #sidebar-second{background: none; padding: 14px 0 0 0; width: 290px; margin: 0;}
 body.front.one-sidebar.sidebar-second #sidebar-second{padding-top: 3px}
 
-.sidebar .top-line{display: none; background: none; height: 0; margin: 0;}
-
-
-
 .sidebar #block-views-articles-block-1 .content,
 .sidebar .block .content{padding: 5px 5px 0 0;}
 
-.sidebar .block-title{padding: 10px 5px 3px 0; border-bottom: 3px solid lightgray; color: gray;}
+
 
 .sidebar .block .content .views-row a{color: #777; font-size: 12px; display: block; width: 205px; margin: 0 0 0 5px;}
 
