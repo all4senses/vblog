@@ -547,12 +547,12 @@ td.views-field-php-7{font-size: 28px; font-weight: bold; color: orange; font-sty
 
 body.sidebar-second #sidebar-second{float: right; margin-right: 18px; padding: 18px 0 0; width: 220px;}
 
-.sidebar .top-line{background: url("images/sprite-0.png") no-repeat scroll 0 -2px transparent; height: 5px; margin: 20px 0 15px 13px; width: 100%;}
+.sidebar .top-line{background: url("images/sprite-0.png") no-repeat scroll 0 -2px transparent; height: 5px; margin: 20px 0 15px 13px; width: 225px;}
 
 .sidebar .block{overflow: hidden; margin: 12px; position: relative; z-index: 1;}
 
 
-.sidebar .block-title{margin: 0; padding: 0px 5px 3px 0; font-size: 16px; font-weight: bold; text-transform: capitalize; line-height: 18px; color: #1f99ee;}
+.sidebar .block-title{margin: 0; padding: 10px 5px 10px 0; font-size: 16px; font-weight: bold; text-transform: capitalize; line-height: 18px; color: #1f99ee;}
 
 .sidebar .block li{list-style: none; clear: both;}
 
@@ -601,7 +601,7 @@ body.front.one-sidebar.sidebar-second #sidebar-second{padding-top: 3px}
 
 
 
-.sidebar .block .content .views-row a{color: #777; font-size: 12px; display: block; width: 205px; margin: 0 0 0 5px;}
+.sidebar .block .content .views-row a{color: #777; font-size: 12px; display: block; width: 205px; margin: 0 0 10px 15px; background: url("images/arrow-triangle-blue-right.png") no-repeat 0 5px; padding: 0 0 0 15px;}
 
 #block-views-blog-block-latest-news .views-row {border-bottom: 1px solid lightgray;}
 

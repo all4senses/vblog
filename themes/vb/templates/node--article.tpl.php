@@ -7,6 +7,44 @@
     $url = 'http://www.voip-weblog.com'. url('node/' . $node->nid);
     echo '<div class="float share">' . vb_blocks_getSocialiteButtons($url, $node->title) . '</div>';
 
+    
+    
+    //$created_str = date('F d, Y', $node->created);
+    $created_str = date('\<\d\i\v\>d\<\/\d\i\v\>\<\s\p\a\n\>F\<\/\s\p\a\n\>', $node->created);
+    $created_rdf = preg_replace('|(.*)content=\"(.*)\"\s(.*)|', '$2', $date); //date('Y-m-d\TH:i:s', $node->created); 
+
+    $extra_data['guest_author'] = NULL;
+    if (!empty($node->field_extra_data['und'][0]['value'])) {
+      $extra_data = unserialize($node->field_extra_data['und'][0]['value']);
+
+      if (!empty($extra_data['guest_author'])) {
+        if (strpos($extra_data['guest_author'], '; ')) {
+          $extra_data['guest_author'] = explode('; ', $extra_data['guest_author']);
+          $extra_data['guest_author'] = $author_name = l($extra_data['guest_author'][0], $extra_data['guest_author'][1], array('absolute' => TRUE));
+        }
+        else {
+          $extra_data['guest_author'] = $author_name = $extra_data['guest_author'];
+        }
+      }
+      else {
+        $extra_data['guest_author'] = $author_name = NULL;
+      }
+    }
+
+    if (!$extra_data['guest_author']) {
+      $authorExtendedData = vb_misc_loadUserExtendedData($node->uid);
+      $author_name = $authorExtendedData->realname;
+    }
+
+    global $language;
+
+    if (!$extra_data['guest_author']) {
+      $author_url = url('user/' . $node->uid);
+      $gplus_profile = ($authorExtendedData->field_u_gplus_profile_value) ? ' <a class="gplus" title="Google+ profile of ' . $author_name . '" href="' . $authorExtendedData->field_u_gplus_profile_value . '?rel=author">(G+)</a>' : '';
+      $author_title = t('!author\'s profile', array('!author' => $author_name));
+    }
+
+              
   ?>
 
   <div class="main-content"> 
@@ -21,6 +59,21 @@
         <header>
       <?php endif; ?>
 
+          
+          
+          <?php 
+
+              
+              if ($page) {
+                echo '<div class="submitted" property="dc:date dc:created" content="' . $created_rdf . '" datatype="xsd:dateTime">' . $created_str . '</div>';
+              }
+              else {
+                echo '<div class="submitted">', $created_str, '</div>';
+              }
+              
+            ?>
+          
+          
           <?php 
           if ($page): ?>
           <h1 
@@ -48,66 +101,38 @@
           </h2>
           <?php endif; ?> 
 
+            
+            
           <?php 
 
-              //$created_str = date('F d, Y \a\t g:ia', $node->created);
-              //$created_str = date('m.d.Y', $node->created);
-              $created_str = date('F d, Y', $node->created);
-              $created_rdf = preg_replace('|(.*)content=\"(.*)\"\s(.*)|', '$2', $date); //date('Y-m-d\TH:i:s', $node->created); 
-              
-              $extra_data['guest_author'] = NULL;
-              if (!empty($node->field_extra_data['und'][0]['value'])) {
-                $extra_data = unserialize($node->field_extra_data['und'][0]['value']);
-                //dpm($extra_data);
-                //$extra_data['guest_author'] = $author_name = !empty($extra_data['guest_author']) ? $extra_data['guest_author'] : NULL;
-                
-                if (!empty($extra_data['guest_author'])) {
-                  if (strpos($extra_data['guest_author'], '; ')) {
-                    $extra_data['guest_author'] = explode('; ', $extra_data['guest_author']);
-                    $extra_data['guest_author'] = $author_name = l($extra_data['guest_author'][0], $extra_data['guest_author'][1], array('absolute' => TRUE));
-                  }
-                  else {
-                    $extra_data['guest_author'] = $author_name = $extra_data['guest_author'];
-                  }
-                }
-                else {
-                  $extra_data['guest_author'] = $author_name = NULL;
-                }
-              }
-
-              if (!$extra_data['guest_author']) {
-                $authorExtendedData = vb_misc_loadUserExtendedData($node->uid);
-                $author_name = $authorExtendedData->realname;
-              }
-
-              global $language;
-
-              if (!$extra_data['guest_author']) {
-                $author_url = url('user/' . $node->uid);
-                //$gplus_profile = (isset($author->field_u_gplus_profile['und'][0]['safe_value']) && $author->field_u_gplus_profile['und'][0]['safe_value']) ? ' <a class="gplus" title="Google+ profile of ' . $author_name . '" href="' . $author->field_u_gplus_profile['und'][0]['safe_value'] . '?rel=author">(G+)</a>' : '';
-                $gplus_profile = ($authorExtendedData->field_u_gplus_profile_value) ? ' <a class="gplus" title="Google+ profile of ' . $author_name . '" href="' . $authorExtendedData->field_u_gplus_profile_value . '?rel=author">(G+)</a>' : '';
-                $author_title = t('!author\'s profile', array('!author' => $author_name));
-              }
               
               if ($page) {
+
+//                $submitted = '<span property="dc:date dc:created" content="' . $created_rdf . '" datatype="xsd:dateTime" rel="sioc:has_creator">' .
+//                                'By: ' .
+//                                (!$extra_data['guest_author'] ? '<span class="username" lang="' . $language->language . '" xml:lang="' . $language->language . '" typeof="sioc:UserAccount" property="foaf:name">' . $author_name . '</span>' : '<span class="guest-author">' . $author_name . '</span>') .
+//                               ', on ' . $created_str .
+//                              '</span>';
+//
+//                echo '<span class="submitted">', $submitted, '</span>';
                 
                 
+                echo '<div class="author" >By: <span rel="sioc:has_creator" class="username" lang="' . $language->language . '" xml:lang="' . $language->language . '" typeof="sioc:UserAccount" property="foaf:name">'
+                      . (!$extra_data['guest_author'] 
+                        ? $author_name 
+                        : '<span class="guest-author">' . $author_name . '</span>') .
+                     '</span></div>';
 
-                $submitted = '<span property="dc:date dc:created" content="' . $created_rdf . '" datatype="xsd:dateTime" rel="sioc:has_creator">' .
-                                'By: ' .
-                                //'<a href="' . $author_url . '" title="View user profile." class="username" lang="' . $language->language . '" xml:lang="' . $language->language . '" about="' . $author_url . '" typeof="sioc:UserAccount" property="foaf:name">' .
-
-                                ////(!$extra_data['guest_author'] ? '<a href="' . $author_url . '" title="' . $author_title . '" class="username" lang="' . $language->language . '" xml:lang="' . $language->language . '" about="' . $author_url . '" typeof="sioc:UserAccount" property="foaf:name">' . $author_name . '</a>' . $gplus_profile : '<span class="guest-author">' . $author_name . '</span>') .
-                                (!$extra_data['guest_author'] ? '<span class="username" lang="' . $language->language . '" xml:lang="' . $language->language . '" typeof="sioc:UserAccount" property="foaf:name">' . $author_name . '</span>' : '<span class="guest-author">' . $author_name . '</span>') .
-
-                                //($node->type == 'article' ? '' : '<span class="delim">|</span>' . $created_str) .
-                                ', on ' . $created_str .
-
-                              '</span>';
-               
-
-                echo '<span class="submitted">', $submitted, '</span>';
-              }              
+              }
+              else {
+                
+//                $submitted = 'By: <span class="author">' . $author_name . '</span>, on ' . $created_str;
+//                echo '<div class="links"><span class="submitted">', $submitted, '</span></div>';
+                
+                echo '<div class="author">By: ' . $author_name . '</div>';
+                
+              }
+              
             ?>
           
 
@@ -133,7 +158,7 @@
               if (!empty($node->body['und'][0]['summary'])) {
                 //dpm('Summary is not empty... Using');
                 //echo l('Read more »', 'node/' . $node->nid, array('attributes' => array('class' => array('more')))) . strip_tags($node->body['und'][0]['summary']);
-                echo l('Read more »', 'node/' . $node->nid, array('attributes' => array('class' => array('more')))) . $node->body['und'][0]['summary'];
+                echo $node->body['und'][0]['summary'] . l('Read more »', 'node/' . $node->nid, array('attributes' => array('class' => array('more'))));
               }
               else{
                 
@@ -146,26 +171,29 @@
                   //$teaser_data = vb_misc_getArticleTeaserData('all', $content['body'][0]['#markup'], $node->nid);
                   $teaser_data = vb_misc_getArticleTeaserData('all', $node->body['und'][0]['value'], $node->nid);
                 }
-                echo l('Read more »', 'node/' . $node->nid, array('attributes' => array('class' => array('more')))) . $teaser_data['teaser'];
+                echo $teaser_data['teaser'] . l('Read more »', 'node/' . $node->nid, array('attributes' => array('class' => array('more'))));
               }
             
             
           }
+          else {
           
-          $keyword_metatag_name = ($node->type == 'news_post') ? 'news_keywords' : 'keywords';
-          
-          if (isset($content['metatags']['keywords'])) {
-            hide($content['metatags']['keywords']);
-          }
-          
-          if (isset($content['metatags']['keywords']['#attached']['drupal_add_html_head'][0][0]['#value']) && $content['metatags']['keywords']['#attached']['drupal_add_html_head'][0][0]['#value']) {
-            vb_misc_addMetatag($keyword_metatag_name, $content['metatags']['keywords']['#attached']['drupal_add_html_head'][0][0]['#value']);
-          }
-          elseif (@$content['field_topics']) {
-            vb_misc_pushTagsToMetatags($keyword_metatag_name, $content['field_topics']);
+              $keyword_metatag_name = ($node->type == 'news_post') ? 'news_keywords' : 'keywords';
+
+              if (isset($content['metatags']['keywords'])) {
+                hide($content['metatags']['keywords']);
+              }
+
+              if (isset($content['metatags']['keywords']['#attached']['drupal_add_html_head'][0][0]['#value']) && $content['metatags']['keywords']['#attached']['drupal_add_html_head'][0][0]['#value']) {
+                vb_misc_addMetatag($keyword_metatag_name, $content['metatags']['keywords']['#attached']['drupal_add_html_head'][0][0]['#value']);
+              }
+              elseif (@$content['field_topics']) {
+                vb_misc_pushTagsToMetatags($keyword_metatag_name, $content['field_topics']);
+              }
           }
           
           echo render($content);
+          
         ?></div>
 
 
@@ -176,12 +204,12 @@
         <?php 
         
          if (!$page) {
-            global $user;
+            ////global $user;
             ////$submitted = 'By: <a href="' . $author_url . '" title="' . $author_title . '" >' . $author_name . '</a>, on ' . $created_str;
-            $submitted = 'By: <span class="author">' . $author_name . '</span>, on ' . $created_str;
+            ////////////$submitted = 'By: <span class="author">' . $author_name . '</span>, on ' . $created_str;
             //echo '<div class="links">' . l($content['field_categories'][0]['#title'], $content['field_categories'][0]['#href']). '<span class="delim">|</span><span class="submitted">', $submitted, '</span><span class="delim">|</span>' . l('Comments' . ( ($user->uid && $node->comment_count) ? ' (' . $node->comment_count . ')' : ''), 'node/' . $node->nid, array('fragment' => 'comments')) . '</div>';
             ////echo '<div class="links"><span class="submitted">', $submitted, '</span><span class="delim">|</span>' . l('Comments' . ( ($user->uid && $node->comment_count) ? ' (' . $node->comment_count . ')' : ''), 'node/' . $node->nid, array('fragment' => 'comments')) . '</div>';
-            echo '<div class="links"><span class="submitted">', $submitted, '</span></div>';
+            ///////////echo '<div class="links"><span class="submitted">', $submitted, '</span></div>';
          }
          else {
            
@@ -192,6 +220,7 @@
         } 
       ?>
     </footer>
+    
     
     
     
