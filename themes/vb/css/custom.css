@@ -220,18 +220,18 @@ body.not-admin #om-menu-main-om-menu li.om-leaf.leaf-write-review{background: no
 /*Make screen wide width for om submenu block */
 
 .om-maximenu .om-maximenu-content
-{min-width: 170px; box-shadow: 3px 7px 7px -7px black; width: 98%; border: 3px solid gray; margin-top: 52px; /*position: relative; */left: -2px; top: 0;}
+{min-width: 170px; box-shadow: 3px 7px 7px -7px black; width: 98%; border: 3px solid white; margin-top: 52px; /*position: relative; */left: -2px; top: 0;}
 /*{top: 40px; padding-top: 5px; min-width: 170px; width: 180px; box-shadow: 3px 7px 7px -7px black;}*/
 
 /*.om-maximenu-simple .om-maximenu-middle{background: #478afd; color: white; padding: 10px 15px 0 10px; border-radius: 0 0 8px 8px; box-shadow: 3px 7px 7px -7px #000000; width: auto;}*/
-.om-maximenu-simple .om-maximenu-middle{color: white; padding: 3px 0 7px 0; box-shadow: 3px 7px 7px -7px #000000;}
+.om-maximenu-simple .om-maximenu-middle{padding: 3px 0 7px 0; box-shadow: 3px 7px 7px -7px #000000; background: #0b75b6;}
 
 /*
 .om-maximenu-simple .om-maximenu-middle a{color: gray; background: url(/sites/all/themes/vb/css/images/sprite-2.png) repeat-x scroll 0 -58px #F3F3F3; padding: 10px; display: block; width: auto;}
 .om-maximenu-simple .om-maximenu-middle a:hover {background: url("/sites/all/themes/vb/css/images/sprite-0.png") no-repeat -50px -190px; color: white; text-decoration: none;}
 */
-.om-maximenu-simple .om-maximenu-middle a{color: gray; padding: 10px; display: block; width: auto;}
-.om-maximenu-simple .om-maximenu-middle a:hover {color: black; text-decoration: none; display: block;}
+.om-maximenu-simple .om-maximenu-middle a{color: white; padding: 10px; display: block; width: auto;}
+.om-maximenu-simple .om-maximenu-middle a:hover {text-decoration: none; display: block; background: #1f99ee;}
 
 
 /*.leaf-business-voip .om-maximenu-content{width: 200px;}*/
