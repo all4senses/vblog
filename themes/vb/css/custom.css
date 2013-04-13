@@ -10,7 +10,7 @@ body.one-sidebar.sidebar-second #main {background: white; padding: 5px 10px 10px
 
 body.sidebar-first #main {width: 790px; margin: 0 15px 0 0;}
 
-body.sidebar-first #sidebar-first {width: 250px; background: #f2f5f7; border-radius: 10px; border: 1px solid lightgray; margin: 15px;}
+body.sidebar-first #sidebar-first {width: 250px; background: #f2f5f7; border-radius: 10px; margin: 15px;}
 
 /*.region.region-sidebar-first {background: #f2f5f7; border-radius: 10px; border: 1px solid lightgray; margin: 15px;}*/
 
@@ -381,7 +381,7 @@ h2.preface{font-size: 18px; font-weight: bold; line-height: 18px; margin: 0; pad
 
 .front #main .node .content,
 .content.teaser,
-.content.teaser p{font-size: 13px; overflow: hidden; line-height: 19px; color: black; margin: 5px 0 5px 0;}
+.content.teaser p{font-size: 13px; overflow: hidden; line-height: 19px; color: gray; margin: 5px 0 5px 0;}
 
 
 
@@ -862,9 +862,7 @@ display: none;
 #main .view-taxonomy-term .views-row,
 #main .view-articles .views-row,
 #main .view-news .views-row,
-#main .view-blog .views-row
-/*{border: 1px solid lightgray; height: 198px; padding: 5px 10px; margin-bottom: 12px; overflow: hidden; width: 382px;}*/
-{border-bottom: 1px solid lightgray; padding: 5px 0; margin-bottom: 12px; width: 100%; float: left;}
+#main .view-blog .views-row {padding: 15px 15px 5px 15px; margin-bottom: 12px; overflow: hidden; background: #f2f5f7; border-radius: 10px;}
 
 #main .view-taxonomy-term .views-row-odd,
 #main .view-articles .views-row-odd,
@@ -1165,15 +1163,15 @@ h1.preface{color: gray; font-size: 18px; font-weight: bold; line-height: 25px;
 
 
 /* Articles teasers */
-.node-teaser{margin-bottom: 0; float: left; width: 780px;}
+.node-teaser{margin-bottom: 0; float: left;}
 .node-teaser h2{display: block; overflow: hidden; position: static; text-indent: 0;}
-.node-teaser h2 a, .node-teaser h3 a{color: #004286; font-size: 18px; line-height: 22px; font-weight: bold; margin: 0; border: medium none; padding: 0;}
+.node-teaser h2 a, .node-teaser h3 a{color: #004286; font-size: 22px; line-height: 22px; font-weight: bold; margin: 0; border: medium none; padding: 0; font-family: trebuchet ms;}
 
 .front #main .node h2, .front #main .node h3{color: black; margin: 0; padding: 0; font-size: 18px; font-weight: bold;}
-.front #main .node h2 a, .front #main .node h3 a{font-family: trebuchet ms;}
 
 
-.title-block{position: relative; height: 68px;}
+
+.title-block{position: relative; height: 68px; margin-bottom: 20px;}
 
 .title-block .author {position: absolute; bottom: 0; left: 87px; color: #a9a9a9;}
 
@@ -1192,10 +1190,10 @@ h1.preface{color: gray; font-size: 18px; font-weight: bold; line-height: 25px;
 #main .node-teaser .share{float: right;}
 
 
-.content.teaser .thumb{width: 200px; height: 100px; float: left; margin: 5px 10px 5px 0; text-align: center; overflow: hidden;}
+.content.teaser .thumb{width: 200px; height: 140px; float: left; margin: 5px 10px 5px 0; text-align: center; overflow: hidden;}
 .content.teaser .thumb.field {height: auto;}
 
-.content.teaser .more{color: #ff6000; font-weight: bold; display: block; background: url("images/arrow-circle-right-gray.png") no-repeat right 0; width: 100px;}
+.content.teaser .more{color: #ff6000; font-weight: bold; display: block; background: url("images/arrow-circle-right-gray.png") no-repeat right 0; width: 105px; margin: 20px 0 0 0; float: right;}
 
 
 

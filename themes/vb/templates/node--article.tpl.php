@@ -138,7 +138,8 @@
             
           </div>
 
-
+          <div class="top-line"></div>
+          
       <?php if (!$page): ?>
         </header>
       <?php endif; ?>
