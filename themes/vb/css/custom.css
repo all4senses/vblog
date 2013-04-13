@@ -1794,7 +1794,10 @@ body.one-sidebar.sidebar-second.page-get-iframe #main{background: none transpare
 #block-vb_blocks-social_links{position: absolute; top: 110px; left: 460px;}
 #block-vb_blocks-social_links .title {font-size: 12px; width: 220px; line-height: 18px; margin-bottom: 15px; color: #aaaaaa;}
 .social-links {position: relative;}
-.social-links .col-2 {position: absolute; left: 115px; top: 0;}
+
+.social-links div {float: left;}
+
+/*.social-links .col-2 {position: absolute; left: 115px; top: 0;}*/
 .social-links a{display: block; margin: 0 0 15px 0; text-indent: -9999px; width: 97px; height: 30px;}
 .social-links .Facebook {background: url("images/social.png") no-repeat 0 0 transparent;}
 .social-links .Twitter {background: url("images/social.png") no-repeat 0 -48px transparent;}
