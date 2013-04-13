@@ -129,7 +129,7 @@
 //                $submitted = 'By: <span class="author">' . $author_name . '</span>, on ' . $created_str;
 //                echo '<div class="links"><span class="submitted">', $submitted, '</span></div>';
                 
-                echo '<div class="author">By: ' . $author_name . '</div>';
+                echo '<div class="author">Posted by ' . $author_name . '</div>';
                 
               }
               

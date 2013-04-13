@@ -1170,13 +1170,16 @@ h1.preface{color: gray; font-size: 18px; font-weight: bold; line-height: 25px;
 .node-teaser h2 a, .node-teaser h3 a{color: #004286; font-size: 18px; line-height: 22px; font-weight: bold; margin: 0; border: medium none; padding: 0;}
 
 .front #main .node h2, .front #main .node h3{color: black; margin: 0; padding: 0; font-size: 18px; font-weight: bold;}
-.front #main .node h2 a, .front #main .node h3 a{}
+.front #main .node h2 a, .front #main .node h3 a{font-family: trebuchet ms;}
 
 
+.title-block{position: relative; height: 68px;}
+
+.title-block .author {position: absolute; bottom: 0; left: 87px; color: #a9a9a9;}
 
 #main .node-teaser .submitted{background: #1f99ee; width: 75px; height: 65px; border-radius: 10px; text-align: center; color: white; float: left; margin: 0 10px 10px 0;}
 
-#main .node-teaser .submitted div {font-size: 30px; font-weight: bold; padding: 14px 0 5px 0;}
+#main .node-teaser .submitted div {font-size: 30px; font-weight: bold; padding: 14px 0 5px 0; font-family: impact;}
 
 .submitted span {font-size: 11px;}
 
@@ -1192,7 +1195,7 @@ h1.preface{color: gray; font-size: 18px; font-weight: bold; line-height: 25px;
 .content.teaser .thumb{width: 200px; height: 100px; float: left; margin: 5px 10px 5px 0; text-align: center; overflow: hidden;}
 .content.teaser .thumb.field {height: auto;}
 
-.content.teaser .more{color: #478AFD; font-weight: bold; position: absolute; right: 0; top: 5px;}
+.content.teaser .more{color: #ff6000; font-weight: bold; display: block;}
 
 
 
