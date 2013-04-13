@@ -1791,7 +1791,7 @@ body.one-sidebar.sidebar-second.page-get-iframe #main{background: none transpare
 #block-vb_blocks-send_msg_n_subscribe .form-actions, #block-vb-blocks-send-msg-n-subscribe .form-actions {float: right; margin: 0; width: 70px; height: 95px;}
 #block-vb_blocks-send_msg_n_subscribe .form-actions input, #block-vb-blocks-send-msg-n-subscribe .form-actions input {height: 100px; width: 100%; background: url("images/send-msg-btn.png") no-repeat scroll -3px 0 transparent; border: none; text-indent: -9999px; cursor: pointer;}
 
-#block-vb_blocks-social_links{position: absolute; top: 110px; left: 460px;}
+#block-vb_blocks-social_links{float: right; margin: 20px 10px 0 0;}
 #block-vb_blocks-social_links .title {font-size: 12px; width: 220px; line-height: 18px; margin-bottom: 15px; color: #aaaaaa;}
 .social-links {position: relative;}
 
@@ -1845,7 +1845,3 @@ body.one-sidebar.sidebar-second.page-get-iframe #main{background: none transpare
 #disqus_thread {margin-top: 30px;}
 
 .views-row {position: relative;}
-
-.not-logged-in #block-vb_blocks-social_links {left: 5px;}
-
-.not-logged-in #block-vb_blocks-footer_links {left: 400px;}
