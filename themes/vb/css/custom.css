@@ -549,7 +549,7 @@ body.sidebar-second #sidebar-second{float: right; margin-right: 18px; padding: 1
 
 .sidebar .top-line{background: url("images/sprite-0.png") no-repeat scroll 0 -2px transparent; height: 5px; margin: 20px 0 15px 13px; width: 225px;}
 
-.views-row .top-line {background: url("images/sprite-0.png") no-repeat scroll 0 -2px transparent; height: 20px; width: 300px;}
+.views-row .top-line {background: url("images/line-horizontal.jpg") no-repeat scroll 0 -2px transparent; height: 20px; width: 300px;}
 
 .sidebar .block{overflow: hidden; margin: 12px; position: relative; z-index: 1;}
 
