@@ -750,7 +750,7 @@ form .counter.exceeded{color: red;}
 
 .node-type-admin-page h1{margin-top: 13px;}
   
-.page-node #main .submitted{font-size: 12px; color: gray;}
+
 
 .page-node .submitted .delim{font-weight: bold; margin-right: 5px;}
 
@@ -1176,7 +1176,7 @@ h1.preface{color: gray; font-size: 18px; font-weight: bold; line-height: 25px;
 
 .title-block .author {position: absolute; bottom: 0; left: 87px; color: #a9a9a9;}
 
-#main .node-teaser .submitted{background: #1f99ee; width: 75px; height: 65px; border-radius: 10px; text-align: center; color: white; float: left; margin: 0 10px 10px 0;}
+.submitted{background: #1f99ee; width: 75px; height: 65px; border-radius: 10px; text-align: center; color: white; float: left; margin: 0 10px 10px 0;}
 
 #main .node-teaser .submitted div {font-size: 30px; padding: 14px 0 5px 0; font-family: impact;}
 
