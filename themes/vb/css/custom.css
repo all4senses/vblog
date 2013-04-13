@@ -213,7 +213,7 @@ body.not-admin #om-menu-main-om-menu li.om-leaf.leaf-write-review{background: no
 
 #om-menu-main-om-menu li.om-leaf:hover a.om-link
 /*.om-leaf a:hover */
-{background: #0b75b6; height: 32px !important; overflow: hidden; position: relative; left: -2px;}
+{background: #0b75b6; height: 32px !important; overflow: hidden; position: relative; /*left: -2px;*/}
 
 
 
@@ -1179,7 +1179,7 @@ h1.preface{color: gray; font-size: 18px; font-weight: bold; line-height: 25px;
 
 #main .node-teaser .submitted{background: #1f99ee; width: 75px; height: 65px; border-radius: 10px; text-align: center; color: white; float: left; margin: 0 10px 10px 0;}
 
-#main .node-teaser .submitted div {font-size: 30px; font-weight: bold; padding: 14px 0 5px 0; font-family: impact;}
+#main .node-teaser .submitted div {font-size: 30px; padding: 14px 0 5px 0; font-family: impact;}
 
 .submitted span {font-size: 11px;}
 
