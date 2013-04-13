@@ -25,6 +25,7 @@
 //          echo '<div id="block-vb-blocks-header-links"><div class="follow-us">Follow Us</div>', vb_blocks_get_headerLinks(), '</div>', render($page['header']); 
 //        }
       ?>
+      <a id="e" href="/admin/content-vb">e</a>
     </nav> <!-- /#navigation -->
 
     <?php ////if ($breadcrumb): print $breadcrumb; endif;?>
