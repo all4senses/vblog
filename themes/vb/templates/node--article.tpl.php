@@ -59,7 +59,7 @@
         <header>
       <?php endif; ?>
 
-          
+          <div class="title-block">
           
           <?php 
 
@@ -134,7 +134,9 @@
               }
               
             ?>
-          
+            
+            
+          </div>
 
 
       <?php if (!$page): ?>
