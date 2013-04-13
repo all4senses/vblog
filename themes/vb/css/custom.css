@@ -1195,7 +1195,7 @@ h1.preface{color: gray; font-size: 18px; font-weight: bold; line-height: 25px;
 .content.teaser .thumb{width: 200px; height: 100px; float: left; margin: 5px 10px 5px 0; text-align: center; overflow: hidden;}
 .content.teaser .thumb.field {height: auto;}
 
-.content.teaser .more{color: #ff6000; font-weight: bold; display: block;}
+.content.teaser .more{color: #ff6000; font-weight: bold; display: block; background: url("images/arrow-circle-right-gray.png") no-repeat right 0; width: 100px;}
 
 
 
