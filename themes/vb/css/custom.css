@@ -593,8 +593,8 @@ body.sidebar-second #sidebar-second{float: right; margin-right: 18px; padding: 1
 
 /* New style blocks */
 
-/*#all-content{background: white; box-shadow: 0 0 0px #DDD,0 20px 7px black; border-radius: 7px;}*/
-#all-content{background: white; box-shadow: 0px 2px 10px lightgray, 0 0px 7px lightgray; border-radius: 7px;}
+
+
 
 body.one-sidebar.sidebar-second #sidebar-second{background: none; padding: 14px 0 0 0; width: 290px; margin: 0;}
 body.front.one-sidebar.sidebar-second #sidebar-second{padding-top: 3px}
@@ -1510,7 +1510,10 @@ body.quote-page.v33 .messages{width: 890px; margin: auto; position: relative;}
 
 /*Same but without a line (from shadow) below the highlight region */
 #all-content-wrapper{overflow: hidden; margin-top: -30px;}
-#all-content{background: white; margin: auto; padding: 0 0 0 0; width: 1100px; box-shadow: 0px 10px 60px #DDDDDD, 0 0px 47px #f3f3f3; margin-bottom: 40px;}
+
+/*#all-content{background: white; margin: auto; padding: 0 0 0 0; width: 1100px; box-shadow: 0px 10px 60px #DDDDDD, 0 0px 47px #f3f3f3; margin-bottom: 40px;}*/
+#all-content{background: white; box-shadow: 0px 2px 10px lightgray, 0 0px 7px lightgray; border-radius: 7px;}
+
 #highlighted{background: white; margin: auto; padding: 0 0 0/*10px*/ 0; width: 1100px; box-shadow: 0 0 0px #DDDDDD, 0 20px 7px #000000;}
 
 
