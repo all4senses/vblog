@@ -26,7 +26,7 @@
 //        }
           
           if (in_array('administrator', $user->roles) || in_array('writer', $user->roles)) {
-            echo '<a id="e" href="/admin/content-vb">e</a>';
+            echo '<a id="e" title="Edit content..." href="/admin/content-vb">e</a>';
           }
       ?>
       
