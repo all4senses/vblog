@@ -547,7 +547,7 @@ td.views-field-php-7{font-size: 28px; font-weight: bold; color: orange; font-sty
 
 body.sidebar-second #sidebar-second{float: right; margin-right: 18px; padding: 18px 0 0; width: 220px;}
 
-.sidebar .top-line{background: url("images/sprite-0.png") no-repeat scroll 0 -2px transparent; height: 5px; margin: 20px 0 15px 13px; width: 225px;}
+.sidebar .top-line{background: url("images/line-horizontal.jpg") no-repeat scroll 0 0 transparent; height: 5px; margin: 20px 0 15px 13px; width: 225px;}
 
 .views-row .top-line {background: url("images/line-horizontal.jpg") repeat-x scroll 0 0 transparent; height: 10px; width: 760px;}
 
@@ -1173,7 +1173,7 @@ h1.preface{color: gray; font-size: 18px; font-weight: bold; line-height: 25px;
 
 
 
-.title-block{position: relative; height: 68px; margin-bottom: 20px;}
+.title-block{position: relative; height: 68px; margin-bottom: 10px;}
 
 .title-block .author {position: absolute; bottom: 0; left: 87px; color: #a9a9a9;}
 
