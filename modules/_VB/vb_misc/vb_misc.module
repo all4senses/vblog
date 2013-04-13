@@ -116,14 +116,14 @@ function vb_misc_testPage() {
     
     
     
-    if (strpos($new_body, '?вЂљ?В©')) {
-      if(preg_match('/(.*)\?\вЂљ\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $new_body, $matches)) {
+    if (strpos($new_body, '?РІР‚С™?Р’В©')) {
+      if(preg_match('/(.*)\?\РІР‚С™\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $new_body, $matches)) {
         dpm($matches);
         $result->matches = $matches;
         
         
-        $result->new_body = str_replace('Photo ?вЂљ?В©', 'Photo В©', $result->body_value);
-        $result->new_body = str_replace('?вЂљ?В©', 'Photo В©', $result->new_body);
+        $result->new_body = str_replace('Photo ?РІР‚С™?Р’В©', 'Photo Р’В©', $result->body_value);
+        $result->new_body = str_replace('?РІР‚С™?Р’В©', 'Photo Р’В©', $result->new_body);
         
         $new_body = $result->new_body;
         
@@ -231,13 +231,13 @@ function vb_misc_testPage() {
   /*
   $str = '<div class="pic">
 	<img alt="Nokia Launches New Symbian 1Ghz Phone In India" border="0" src="http://www.voip-weblog.com/f/24768940/images/flickr_4806180462.jpg" /><br />
-	?вЂљ?В© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
+	?РІР‚С™?Р’В© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
   
   
 
   
   //$str = '<div class="pic">
-	//<img alt="Nokia Launches New Symbian 1Ghz Phone In India" border="0" src="http://www.voip-weblog.com/f/24768940/images/flickr_4806180462.jpg" /><br />?вЂљ?В© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
+	//<img alt="Nokia Launches New Symbian 1Ghz Phone In India" border="0" src="http://www.voip-weblog.com/f/24768940/images/flickr_4806180462.jpg" /><br />?РІР‚С™?Р’В© <a href="http://www.flickr.com/photos/johnkarakatsanis/4806180462/" rel="nofollow">John.Karakatsanis</a></div>';
   
   
   //$str = '<div class="pic">aaa</div>';
@@ -283,10 +283,10 @@ After looking over all these phones, I realize why I eventually got fed up with 
 
 Granted the phones I have are probably a couple of years old by now. Maybe there&#39;s newer gear out there that&#39;s cooler? What do you think? 
 
-?вЂљ?В© <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.flickr.com/photos/exalthim/465504923/">Mr.Thomas</a>
+?РІР‚С™?Р’В© <a rel="nofollow" onclick="tracking(this); return true;" href="http://www.flickr.com/photos/exalthim/465504923/">Mr.Thomas</a>
 ';
     
-  if(preg_match('/(.*)\?\вЂљ\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
+  if(preg_match('/(.*)\?\РІР‚С™\?.*<a.*href="(.*)".*>(.*)<\/a>(.*)/i', $str, $matches)) {
     dpm($matches);
   }
   */
@@ -1979,7 +1979,7 @@ function vb_misc_getArticleTeaserData($target, $body_full_markup, $nid, $charact
   $last_pos = strrpos($teaser, ' ');
   
   // $teaser = substr_replace ($teaser, '...' . l(t('Read More'), 'node/' . $nid, array('attributes' => array('class' => array('more')))) , $last_pos, strlen($matches[1]));
-  ////$teaser = substr_replace ($teaser, '...' . l('Read the rest of this entry В»', 'node/' . $nid, array('attributes' => array('class' => array('more')))), $last_pos);
+  ////$teaser = substr_replace ($teaser, '...' . l('Read the rest of this entry Р’В»', 'node/' . $nid, array('attributes' => array('class' => array('more')))), $last_pos);
   $teaser = substr_replace ($teaser, '...', $last_pos);
   
   
@@ -3673,6 +3673,9 @@ function vb_misc_theme($existing, $type, $theme, $path) {
     'vb_misc_socialLinks' => array(
       'variables' => array('vars' => null),
     ),
+    'vb_misc_socialLinks_twoColumns' => array(
+      'variables' => array('vars' => null),
+    ),
     // Fivestar REPLACING theme functions.
     'vb_misc_fivestar_static' => array(
       'variables' => array('rating' => NULL, 'stars' => 5, 'tag' => 'vote', 'widget' => array('name' => 'default', 'css' => '')),
@@ -3794,12 +3797,47 @@ function theme_vb_misc_tagadelicWeighted_acceptPredefinedTermsPaths(array $vars)
 
   return $output;
 }
-  
+
 
 /**
  * Simple theming of nested submenu.
  */
 function theme_vb_misc_socialLinks($vars) {
+  if(empty($vars['submenu']['below'])) {
+    return NULL;
+  }
+
+  $class = isset($vars['class']) ? $vars['class'] : 'social-links';
+  $delimiter = isset($vars['delimiter']) ? $vars['delimiter'] : '';
+  $out = '<div class="' . $class . '">';
+  $count = 0;
+  foreach ($vars['submenu']['below'] as $submenu) {
+    
+    if (isset($submenu['link']['hidden']) && $submenu['link']['hidden']) {
+      continue;
+    }
+    
+    //$out .= ($count ? $delimiter : '') . '<div>' . l(t($submenu['link']['link_title']), $submenu['link']['href'], array('attributes' => array('class' => array($submenu['link']['link_title']), 'title' => $submenu['link']['options']['attributes']['title'], 'target' => '_blank' ))) . '</div>';
+    
+    
+    if ($submenu['link']['link_title'] == 'GooglePlus') {
+      $out .= ($count ? $delimiter : '') . '<div>' . l($submenu['link']['link_title'], $submenu['link']['href'], array('attributes' => array('class' => array($submenu['link']['link_title']), 'title' => $submenu['link']['options']['attributes']['title'], 'target' => '_blank', 'rel' => 'publisher' ))) . '</div>';
+    }
+    else {
+      $out .= ($count ? $delimiter : '') . '<div>' . l($submenu['link']['link_title'], $submenu['link']['href'], array('attributes' => array('class' => array($submenu['link']['link_title']), 'title' => $submenu['link']['options']['attributes']['title'], 'target' => '_blank' ))) . '</div>';
+    }
+    
+    $count++;
+  }
+  $out .= '</div></div>';
+  return $out;
+}
+
+
+/**
+ * Simple theming of nested submenu two columns.
+ */
+function theme_vb_misc_socialLinks_twoColumns($vars) {
   if(empty($vars['submenu']['below'])) {
     return NULL;
   }
@@ -4954,7 +4992,7 @@ function vb_misc_getProviderQuickData($target, $data) {
         $out = theme('vb_misc_fivestar_static', array('rating' => $all_data_quick[$data['data']->nid]['erating'], 'stars' => 5, 'tag' => 'overall', 'widget' => array('name' => 'stars', 'css' => 'stars.css')));
       }
       
-      $out .= '<div class="link">' . l('Read review В»', 'node/' . $data['data']->nid) . '</div>';
+      $out .= '<div class="link">' . l('Read review Р’В»', 'node/' . $data['data']->nid) . '</div>';
       
       return $out;
       
