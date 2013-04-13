@@ -25,8 +25,9 @@
 //          echo '<div id="block-vb-blocks-header-links"><div class="follow-us">Follow Us</div>', vb_blocks_get_headerLinks(), '</div>', render($page['header']); 
 //        }
           
-          dpm($user);
-          echo '<a id="e" href="/admin/content-vb">e</a>';
+          if (in_array('administrator', $user->roles) || in_array('writer', $user->roles)) {
+            echo '<a id="e" href="/admin/content-vb">e</a>';
+          }
       ?>
       
     </nav> <!-- /#navigation -->
