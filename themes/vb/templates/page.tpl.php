@@ -159,7 +159,7 @@
     <div id="footer-inside">
 
       
-      <div class="c">Copyright © 2005-2013 voip-weblog.com</div>
+      <div class="c">Copyright © 2005-2014 voip-weblog.com</div>
       
       <?php 
         //echo render($page['footer']);
